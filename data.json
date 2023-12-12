@@ -1,0 +1,709 @@
+{
+  "001": {
+    "uid": "A101937",
+    "name": "Vuong Thanh Tung",
+    "team": 1,
+    "priority": 4,
+    "active": 1
+  },
+  "002": {
+    "uid": "A218689",
+    "name": "Tran Thi Ngoc Minh",
+    "team": 2,
+    "priority": 1,
+    "active": 1
+  },
+  "003": {
+    "uid": "A220060",
+    "name": "Nguyen Duy Kha",
+    "team": 2,
+    "priority": 1,
+    "active": 1
+  },
+  "004": {
+    "uid": "A220426",
+    "name": "Nguyen Gia Bao",
+    "team": 2,
+    "priority": 1,
+    "active": 1
+  },
+  "005": {
+    "uid": "A208351",
+    "name": "Vo Quang Nhan",
+    "team": 2,
+    "priority": 2,
+    "active": 1
+  },
+  "006": {
+    "uid": "A221197",
+    "name": "Bui Ngoc Bao Tram",
+    "team": 2,
+    "priority": 1,
+    "active": 1
+  },
+  "007": {
+    "uid": "A154176",
+    "name": "Dang Nguyen Nguyen Vu",
+    "team": 2,
+    "priority": 3,
+    "active": 1
+  },
+  "008": {
+    "uid": "A208030",
+    "name": "Tu Vuong Bao Ngoc",
+    "team": 2,
+    "priority": 2,
+    "active": 1
+  },
+  "009": {
+    "uid": "A221296",
+    "name": "Do Duy Tan",
+    "team": 2,
+    "priority": 2,
+    "active": 1
+  },
+  "010": {
+    "uid": "A197134",
+    "name": "Phan Tan Thai Duong",
+    "team": 3,
+    "priority": 2,
+    "active": 1
+  },
+  "011": {
+    "uid": "A186761",
+    "name": "Pham Thanh Hai",
+    "team": 7,
+    "priority": 3,
+    "active": 1
+  },
+  "012": {
+    "uid": "A231708",
+    "name": "Duong Nam",
+    "team": 2,
+    "priority": 1,
+    "active": 1
+  },
+  "013": {
+    "uid": "A231778",
+    "name": "Lam Chi Hien",
+    "team": 2,
+    "priority": 1,
+    "active": 1
+  },
+  "014": {
+    "uid": "A231796",
+    "name": "Le Khac Hoan Vu",
+    "team": 2,
+    "priority": 2,
+    "active": 1
+  },
+  "015": {
+    "uid": "A101909",
+    "name": "Dang Minh Nhat",
+    "team": 3,
+    "priority": 4,
+    "active": 1
+  },
+  "016": {
+    "uid": "A133216",
+    "name": "Hoang Quoc Vu",
+    "team": 1,
+    "priority": 4,
+    "active": 1
+  },
+  "017": {
+    "uid": "A231714",
+    "name": "Dinh Anh Trung",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "018": {
+    "uid": "A220097",
+    "name": "Tran Minh Thien",
+    "team": 4,
+    "priority": 3,
+    "active": 1
+  },
+  "019": {
+    "uid": "T197734",
+    "name": "Nguyen Huu Trong",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "020": {
+    "uid": "A133518",
+    "name": "Dang Ngan Nhat Phuong",
+    "team": 5,
+    "priority": 3,
+    "active": 1
+  },
+  "021": {
+    "uid": "A143963",
+    "name": "Mai Hong Thuc",
+    "team": 6,
+    "priority": 3,
+    "active": 1
+  },
+  "022": {
+    "uid": "A220626",
+    "name": "Dang Huynh Song Thao",
+    "team": 6,
+    "priority": 1,
+    "active": 1
+  },
+  "023": {
+    "uid": "A221254",
+    "name": "Phan Ly Nhung",
+    "team": 6,
+    "priority": 1,
+    "active": 1
+  },
+  "024": {
+    "uid": "A186489",
+    "name": "Kieu Van Tien",
+    "team": 4,
+    "priority": 2,
+    "active": 1
+  },
+  "025": {
+    "uid": "T197510",
+    "name": "Hoang Huu Dat",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "026": {
+    "uid": "A231681",
+    "name": "Do Quang Vinh",
+    "team": 4,
+    "priority": 2,
+    "active": 1
+  },
+  "027": {
+    "uid": "A186755",
+    "name": "Truong Minh Dong",
+    "team": 4,
+    "priority": 2,
+    "active": 1
+  },
+  "028": {
+    "uid": "A219208",
+    "name": "Hoang Gia Vuong",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "029": {
+    "uid": "A231644",
+    "name": "Nguyen Van Thinh",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "030": {
+    "uid": "A231676",
+    "name": "Pham Xuan Quang",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "031": {
+    "uid": "A218785",
+    "name": "Huynh Van Hau",
+    "team": 4,
+    "priority": 2,
+    "active": 1
+  },
+  "032": {
+    "uid": "A220616",
+    "name": "Vu Dinh Cao",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "033": {
+    "uid": "A229973",
+    "name": "Le Viet Hoang",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "034": {
+    "uid": "A186906",
+    "name": "Dang Minh Thien",
+    "team": 5,
+    "priority": 2,
+    "active": 1
+  },
+  "035": {
+    "uid": "A231814",
+    "name": "Do Dieu Trinh",
+    "team": 4,
+    "priority": 1,
+    "active": 1
+  },
+  "036": {
+    "uid": "A207855",
+    "name": "Nguyen Minh Quang",
+    "team": 5,
+    "priority": 2,
+    "active": 1
+  },
+  "037": {
+    "uid": "A208059",
+    "name": "Mai Thanh Man",
+    "team": 5,
+    "priority": 2,
+    "active": 1
+  },
+  "038": {
+    "uid": "A208088",
+    "name": "Phan Dinh Khang",
+    "team": 5,
+    "priority": 2,
+    "active": 1
+  },
+  "039": {
+    "uid": "A218734",
+    "name": "Truong Anh Hao",
+    "team": 5,
+    "priority": 1,
+    "active": 1
+  },
+  "040": {
+    "uid": "A220067",
+    "name": "On Quan An",
+    "team": 5,
+    "priority": 1,
+    "active": 1
+  },
+  "041": {
+    "uid": "A220161",
+    "name": "Tra Anh Toan",
+    "team": 5,
+    "priority": 1,
+    "active": 1
+  },
+  "042": {
+    "uid": "A220170",
+    "name": "Tran Phuc Nguyen",
+    "team": 5,
+    "priority": 1,
+    "active": 1
+  },
+  "043": {
+    "uid": "A154361",
+    "name": "Nguyen Thi Thu Huong",
+    "team": 8,
+    "priority": 2,
+    "active": 1
+  },
+  "044": {
+    "uid": "A175488",
+    "name": "Ho Minh Trang",
+    "team": 8,
+    "priority": 3,
+    "active": 1
+  },
+  "045": {
+    "uid": "A218743",
+    "name": "Huynh Dai Nghia",
+    "team": 8,
+    "priority": 3,
+    "active": 1
+  },
+  "046": {
+    "uid": "A218994",
+    "name": "Truong Minh Hoang",
+    "team": 8,
+    "priority": 1,
+    "active": 1
+  },
+  "047": {
+    "uid": "A219235",
+    "name": "Phan Van Hau",
+    "team": 8,
+    "priority": 1,
+    "active": 1
+  },
+  "048": {
+    "uid": "A219361",
+    "name": "Truong Quang Truong",
+    "team": 8,
+    "priority": 1,
+    "active": 1
+  },
+  "049": {
+    "uid": "T219383",
+    "name": "Dang Thi Kim Tuyen",
+    "team": 8,
+    "priority": 1,
+    "active": 1
+  },
+  "050": {
+    "uid": "A220533",
+    "name": "Bui Xuan Truong",
+    "team": 8,
+    "priority": 1,
+    "active": 1
+  },
+  "051": {
+    "uid": "A219353",
+    "name": "Le Thi Ngoc Xuan",
+    "team": 6,
+    "priority": 1,
+    "active": 1
+  },
+  "052": {
+    "uid": "A091815",
+    "name": "Tran Gia Huan",
+    "team": 8,
+    "priority": 3,
+    "active": 1
+  },
+  "053": {
+    "uid": "A175563",
+    "name": "Tran Quang Thai",
+    "team": 6,
+    "priority": 2,
+    "active": 1
+  },
+  "054": {
+    "uid": "A186878",
+    "name": "Nguyen Thi Huyen Trang",
+    "team": 6,
+    "priority": 2,
+    "active": 1
+  },
+  "055": {
+    "uid": "A208036",
+    "name": "Vu Xuan Thang",
+    "team": 6,
+    "priority": 2,
+    "active": 1
+  },
+  "056": {
+    "uid": "A218735",
+    "name": "Pham Thanh Tu",
+    "team": 6,
+    "priority": 1,
+    "active": 1
+  },
+  "057": {
+    "uid": "A220144",
+    "name": "Bui Huynh Hao Thien",
+    "team": 6,
+    "priority": 1,
+    "active": 1
+  },
+  "058": {
+    "uid": "A220297",
+    "name": "Trinh Van Hoang",
+    "team": 6,
+    "priority": 1,
+    "active": 1
+  },
+  "059": {
+    "uid": "A220936",
+    "name": "Do Thi Bich Tram",
+    "team": 6,
+    "priority": 1,
+    "active": 1
+  },
+  "060": {
+    "uid": "A101891",
+    "name": "Nguyen Thanh Tung",
+    "team": 3,
+    "priority": 2,
+    "active": 1
+  },
+  "061": {
+    "uid": "A154381",
+    "name": "Truong Ngoc Nhat",
+    "team": 3,
+    "priority": 2,
+    "active": 1
+  },
+  "062": {
+    "uid": "A101939",
+    "name": "Dang Tran Tuan",
+    "team": 3,
+    "priority": 2,
+    "active": 1
+  },
+  "063": {
+    "uid": "T186265",
+    "name": "Hoang Nguyen Hoai Nam",
+    "team": 3,
+    "priority": 2,
+    "active": 1
+  },
+  "064": {
+    "uid": "A112560",
+    "name": "Thai Tan Xuyen",
+    "team": 3,
+    "priority": 3,
+    "active": 1
+  },
+  "065": {
+    "uid": "A229971",
+    "name": "Huynh Pham Nhat Trieu",
+    "team": 3,
+    "priority": 1,
+    "active": 1
+  },
+  "066": {
+    "uid": "A220874",
+    "name": "Nguyen Ngoc Lam",
+    "team": 3,
+    "priority": 1,
+    "active": 1
+  },
+  "067": {
+    "uid": "T197557",
+    "name": "Pham Ba Phuc",
+    "team": 3,
+    "priority": 2,
+    "active": 1
+  },
+  "068": {
+    "uid": "A175487",
+    "name": "Quach Thi My Linh",
+    "team": 1,
+    "priority": 2,
+    "active": 1
+  },
+  "069": {
+    "uid": "A081573",
+    "name": "Truong Hoang Linh",
+    "team": 1,
+    "priority": 4,
+    "active": 1
+  },
+  "070": {
+    "uid": "A196998",
+    "name": "Phan Le Thanh Tung",
+    "team": 1,
+    "priority": 3,
+    "active": 1
+  },
+  "071": {
+    "uid": "A197104",
+    "name": "Tran Dang Xuan",
+    "team": 1,
+    "priority": 2,
+    "active": 1
+  },
+  "072": {
+    "uid": "A208028",
+    "name": "Nguyen Van Duong",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "073": {
+    "uid": "A229989",
+    "name": "Tran Doan Tung",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "074": {
+    "uid": "A219328",
+    "name": "Nguyen Nhat Bao",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "075": {
+    "uid": "A220430",
+    "name": "Nguyen Doan Thien Thuong",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "076": {
+    "uid": "A220782",
+    "name": "Thong A Thao",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "077": {
+    "uid": "A221248",
+    "name": "Dang Vinh Truong",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "078": {
+    "uid": "A221324",
+    "name": "Nguyen Viet Bac",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "079": {
+    "uid": "A186110",
+    "name": "Tran Huynh Toi",
+    "team": 1,
+    "priority": 2,
+    "active": 1
+  },
+  "080": {
+    "uid": "A186824",
+    "name": "Vo Tuan Kiet",
+    "team": 7,
+    "priority": 2,
+    "active": 1
+  },
+  "081": {
+    "uid": "A980013",
+    "name": "Thai Pham Van Hiep",
+    "team": 5,
+    "priority": 4,
+    "active": 1
+  },
+  "082": {
+    "uid": "T197739",
+    "name": "Nguyen Nhat Linh",
+    "team": 1,
+    "priority": 2,
+    "active": 1
+  },
+  "083": {
+    "uid": "A231777",
+    "name": "Nguyen The Anh",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "084": {
+    "uid": "A231797",
+    "name": "Nguyen Huynh Lam Vu",
+    "team": 1,
+    "priority": 1,
+    "active": 1
+  },
+  "085": {
+    "uid": "T197719",
+    "name": "Nguyen Van Dao",
+    "team": 7,
+    "priority": 2,
+    "active": 1
+  },
+  "086": {
+    "uid": "A186559",
+    "name": "Nguyen Minh Cam",
+    "team": 5,
+    "priority": 4,
+    "active": 1
+  },
+  "087": {
+    "uid": "A208154",
+    "name": "Thai Hoang Dang",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "088": {
+    "uid": "A220888",
+    "name": "Dang Thai Hien",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "089": {
+    "uid": "A220950",
+    "name": "Vo Kim Thach",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "090": {
+    "uid": "A221323",
+    "name": "Nguyen Quang Thang",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "091": {
+    "uid": "A221357",
+    "name": "Nguyen Phan Thien Long",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "092": {
+    "uid": "A231582",
+    "name": "Le Minh Tuan",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "093": {
+    "uid": "A231636",
+    "name": "Nguyen Gia Huy",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "094": {
+    "uid": "A231643",
+    "name": "Vo Binh An",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "095": {
+    "uid": "A231767",
+    "name": "Vo Thi Kim Ngan",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "096": {
+    "uid": "A231779",
+    "name": "Nguyen Van Hop",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "097": {
+    "uid": "A231784",
+    "name": "Nguyen Quang Chien",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "098": {
+    "uid": "A231787",
+    "name": "Nguyen Hoai Tu",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "099": {
+    "uid": "A231801",
+    "name": "Nguyen Tuan Khanh",
+    "team": 7,
+    "priority": 2,
+    "active": 1
+  },
+  "100": {
+    "uid": "A231803",
+    "name": "Mai Duong Quyen",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  },
+  "101": {
+    "uid": "A231806",
+    "name": "Nguyen Duy Dang",
+    "team": 7,
+    "priority": 1,
+    "active": 1
+  }
+}

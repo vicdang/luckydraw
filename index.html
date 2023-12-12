@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Counter</title>
+    <link rel="stylesheet" href="./flip/css/bootstrap.min.css">
+    <!-- Include your custom CSS file -->
+    <link rel="stylesheet" href="./flip/css/flip.min.css" />
+    <link rel="stylesheet" href="./flip/css/styles.css">
+</head>
+
+<body>
+<!-- Sidebar -->
+<div class="d-flex flex-column sidebar">
+  <!-- Sidebar header -->
+  <header class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Winners</span>
+    </div>
+  </header>
+
+  <!-- Sidebar content -->
+  <nav class="nav flex-column mt-3">
+    <a class="nav-link" href="#">Home</a>
+    <a class="nav-link" href="#">About</a>
+    <a class="nav-link" href="#">Services</a>
+    <a class="nav-link" href="#">Contact</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="container-fluid">
+  <h1>JackPot</h1>
+  <div class="container">
+    <div id="championsList">
+      <h3>Champions</h3>
+    </div>
+    <div class="row">
+        <div class="tab-wrap">
+          <!-- active tab on page load gets checked attribute -->
+          <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+          <label for="tab1">Round 4</label>
+      
+          <input type="radio" id="tab2" name="tabGroup1" class="tab">
+          <label for="tab2">Round 3</label>
+      
+          <input type="radio" id="tab3" name="tabGroup1" class="tab">
+          <label for="tab3">Round 2</label>
+    
+          <input type="radio" id="tab4" name="tabGroup1" class="tab">
+          <label for="tab4">Round 1</label>
+      
+          <div class="tab__content">
+            <h3>Round 4</h3>
+            <div id="tickerR4"></div>
+            <input id="roundR4" type="number" value="5">
+            <button id="randomBtnR4">Random</button>
+            <table id="randomDataR4"></table>
+          </div>
+      
+          <div class="tab__content">
+            <h3>Round 3</h3>
+            <div id="tickerR3"></div>
+            <input id="roundR3" type="number" value="3" disabled>
+            <button id="randomBtnR3">Random</button>
+            <table id="randomDataR3"></table>
+          </div>
+      
+          <div class="tab__content">
+            <h3>Round 2</h3>
+            <div id="tickerR2"></div>
+            <input id="roundR2" type="number" value="2" disabled>
+            <button id="randomBtnR2">Random</button>
+            <table id="randomDataR2"></table>
+          </div>
+    
+          <div class="tab__content">
+            <h3>Round 1</h3>
+            <div id="tickerR1"></div>
+            <input id="roundR1" type="number" value="1" disabled>
+            <button id="randomBtnR1">Random</button>
+            <table id="randomDataR1"></table>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+
+
+<script src="./flip/js/config.js"></script>
+<script src="./flip/js/script.js"></script>
+<script src="./flip/js/flip.min.js"></script>
+<script src="./flip/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

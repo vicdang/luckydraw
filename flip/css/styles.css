@@ -1,0 +1,220 @@
+/* Custom styles for the lucky draw tool */
+.tab-wrap {
+    transition: 0.3s box-shadow ease;
+    border-radius: 6px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    list-style: none;
+    background-color: #fff;
+    margin: 40px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  .tab-wrap:hover {
+    box-shadow: 0 12px 23px rgba(0, 0, 0, 0.23), 0 10px 10px rgba(0, 0, 0, 0.19);
+  }
+  
+  .tab {
+    display: none;
+  }
+  .tab:checked:nth-of-type(1) ~ .tab__content:nth-of-type(1) {
+    opacity: 1;
+    transition: 0.5s opacity ease-in, 0.8s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    transform: translateY(0px);
+    text-shadow: 0 0 0;
+  }
+  .tab:checked:nth-of-type(2) ~ .tab__content:nth-of-type(2) {
+    opacity: 1;
+    transition: 0.5s opacity ease-in, 0.8s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    transform: translateY(0px);
+    text-shadow: 0 0 0;
+  }
+  .tab:checked:nth-of-type(3) ~ .tab__content:nth-of-type(3) {
+    opacity: 1;
+    transition: 0.5s opacity ease-in, 0.8s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    transform: translateY(0px);
+    text-shadow: 0 0 0;
+  }
+  .tab:checked:nth-of-type(4) ~ .tab__content:nth-of-type(4) {
+    opacity: 1;
+    transition: 0.5s opacity ease-in, 0.8s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    transform: translateY(0px);
+    text-shadow: 0 0 0;
+  }
+  .tab:checked:nth-of-type(5) ~ .tab__content:nth-of-type(5) {
+    opacity: 1;
+    transition: 0.5s opacity ease-in, 0.8s transform ease;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    transform: translateY(0px);
+    text-shadow: 0 0 0;
+  }
+  .tab:first-of-type:not(:last-of-type) + label {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .tab:not(:first-of-type):not(:last-of-type) + label {
+    border-radius: 0;
+  }
+  .tab:last-of-type:not(:first-of-type) + label {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .tab:checked + label {
+    background-color: #fff;
+    box-shadow: 0 -1px 0 #fff inset;
+    cursor: default;
+  }
+  .tab:checked + label:hover {
+    box-shadow: 0 -1px 0 #fff inset;
+    background-color: #fff;
+  }
+  .tab + label {
+    box-shadow: 0 -1px 0 #eee inset;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    flex-grow: 3;
+    text-align: center;
+    background-color: #f2f2f2;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    text-align: center;
+    transition: 0.3s background-color ease, 0.3s box-shadow ease;
+    height: 50px;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+  .tab + label:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 0 #f4f4f4 inset;
+  }
+  .tab__content {
+    padding: 10px 25px;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    left: 0;
+    transform: translateY(-3px);
+    border-radius: 6px;
+  }
+  
+  /* boring stuff */
+  body {
+    font-family: "Helvetica", sans-serif;
+    background-color: #e7e7e7;
+    color: #777;
+    /* padding: 30px 0; */
+    font-weight: 300;
+  }
+  
+  .container {
+    margin: 0 auto;
+    display: block;
+    max-width: 800px;
+  }
+  .container > *:not(.tab-wrap) {
+    padding: 0 80px;
+  }
+  
+  h1,
+  h2 {
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    font-weight: 800;
+  }
+  
+  h2 {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+  
+  h3 {
+    font-weight: 400;
+  }
+  
+  p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 10px;
+  }
+  table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  }
+  th, td {
+  padding: 5px;
+  text-align: left;
+  }
+
+body {
+    background-color: #253241;
+    color: #253241;
+    font-family: 'arial';
+    font-weight: bold;
+}
+
+.number-slot {
+    text-align: center;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 20px;
+}
+
+.row {
+    margin: 50px;
+    width: 100%;
+    height: 300px;
+}
+
+.tick-flip-panel {
+    color: #fff;
+    background-color: #253241;
+}
+
+.tick {
+    margin: 8px 4px;
+}
+
+#championsList {
+  color: #fff;
+}
+
+/* Additional custom styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding-top: 2rem; /* Adjust this value as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  min-width: 5rem;
+}

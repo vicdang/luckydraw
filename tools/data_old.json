@@ -1,0 +1,810 @@
+{
+    "6113272": {
+        "id": "A101937",
+        "name": "Vương Thanh Tùng",
+        "grp_1": 0,
+        "grp_2": 5,
+        "user": "vttung",
+        "phone": "0979169676"
+    },
+    "6220924": {
+        "id": "A218689",
+        "name": "Trần Thị Ngọc Minh",
+        "grp_1": 1,
+        "grp_2": 1,
+        "user": "ttnminh",
+        "phone": "0981018352"
+    },
+    "6232305": {
+        "id": "A220060",
+        "name": "Nguyễn Duy Kha",
+        "grp_1": 1,
+        "grp_2": 1,
+        "user": "ndkha",
+        "phone": "0918520390"
+    },
+    "6232761": {
+        "id": "A220426",
+        "name": "Nguyễn Gia Bảo",
+        "grp_1": 1,
+        "grp_2": 1,
+        "user": "ngbao",
+        "phone": "0373608250"
+    },
+    "6210696": {
+        "id": "A208351",
+        "name": "Võ Quang Nhân",
+        "grp_1": 1,
+        "grp_2": 2,
+        "user": "vqnhan",
+        "phone": "0773494369"
+    },
+    "6233432": {
+        "id": "A221197",
+        "name": "Bùi Ngọc Bảo Trâm",
+        "grp_1": 1,
+        "grp_2": 1,
+        "user": "bnbtram",
+        "phone": "0941162761"
+    },
+    "6166411": {
+        "id": "A154176",
+        "name": "Đặng Nguyễn Nguyên Vũ",
+        "grp_1": 1,
+        "grp_2": 3,
+        "user": "dnnvu",
+        "phone": "0349300992"
+    },
+    "6210375": {
+        "id": "A208030",
+        "name": "Từ Vương Bảo Ngọc",
+        "grp_1": 1,
+        "grp_2": 2,
+        "user": "tvbngoc",
+        "phone": "0937708993"
+    },
+    "6233531": {
+        "id": "A221296",
+        "name": "Đỗ Duy Tân",
+        "grp_1": 1,
+        "grp_2": 3,
+        "user": "ddtan1",
+        "phone": "0896462103"
+    },
+    "6109479": {
+        "id": "A197134",
+        "name": "Phan Tấn Thái Dương",
+        "grp_1": 2,
+        "grp_2": 2,
+        "user": "pttduong",
+        "phone": "0396975771"
+    },
+    "6198006": {
+        "id": "A186761",
+        "name": "Phạm Thanh Hải",
+        "grp_1": 3,
+        "grp_2": 3,
+        "user": "pthanhhai",
+        "phone": "0398903988"
+    },
+    "6243043": {
+        "id": "A231708",
+        "name": "Dương Nam",
+        "grp_1": 1,
+        "grp_2": 1,
+        "user": "dnam",
+        "phone": "0393778232"
+    },
+    "6243013": {
+        "id": "A231778",
+        "name": "Lâm Chí Hiền",
+        "grp_1": 1,
+        "grp_2": 1,
+        "user": "lchien",
+        "phone": "0909429915"
+    },
+    "6243031": {
+        "id": "A231796",
+        "name": "Lê Khắc Hoàn Vũ",
+        "grp_1": 1,
+        "grp_2": 2,
+        "user": "lkhvu",
+        "phone": "0906605981"
+    },
+    "6113244": {
+        "id": "A101909",
+        "name": "Đặng Minh Nhật",
+        "grp_1": 2,
+        "grp_2": 5,
+        "user": "dmnhat",
+        "phone": "0937924972"
+    },
+    "6145551": {
+        "id": "A133216",
+        "name": "Hoàng Quốc Vũ",
+        "grp_1": 0,
+        "grp_2": 4,
+        "user": "hqvu",
+        "phone": "0902321599"
+    },
+    "6243059": {
+        "id": "A231714",
+        "name": "Đinh Anh Trung",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "datrung",
+        "phone": "0908023491"
+    },
+    "6232332": {
+        "id": "A220097",
+        "name": "Trần Minh Thiện",
+        "grp_1": 4,
+        "grp_2": 2,
+        "user": "tmthien",
+        "phone": "0946865574"
+    },
+    "5109079": {
+        "id": "T197734",
+        "name": "Nguyễn Hữu Trọng",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "nhuutrong",
+        "phone": "0399458496"
+    },
+    "6145853": {
+        "id": "A133518",
+        "name": "Đặng Ngàn Nhất Phương",
+        "grp_1": 5,
+        "grp_2": 3,
+        "user": "dnnphuong",
+        "phone": "0363780020"
+    },
+    "6155208": {
+        "id": "A143963",
+        "name": "Mai Hồng Thức",
+        "grp_1": 6,
+        "grp_2": 3,
+        "user": "mhthuc",
+        "phone": "0349764623"
+    },
+    "6232961": {
+        "id": "A220626",
+        "name": "Đặng Huỳnh Song Thảo",
+        "grp_1": 6,
+        "grp_2": 1,
+        "user": "dhsthao",
+        "phone": "0961798736"
+    },
+    "6233599": {
+        "id": "A221254",
+        "name": "Phan Lý Nhung",
+        "grp_1": 6,
+        "grp_2": 1,
+        "user": "plnhung",
+        "phone": "0397069473"
+    },
+    "6198724": {
+        "id": "A186489",
+        "name": "Kiều Văn Tiến",
+        "grp_1": 4,
+        "grp_2": 2,
+        "user": "kvtien",
+        "phone": "0978062432"
+    },
+    "5109855": {
+        "id": "T197510",
+        "name": "Hoàng Hữu Đạt",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "hhdat",
+        "phone": "0362924465"
+    },
+    "6243926": {
+        "id": "A231681",
+        "name": "Đỗ Quang Vinh",
+        "grp_1": 4,
+        "grp_2": 3,
+        "user": "dqvinh",
+        "phone": "0985022738"
+    },
+    "6198090": {
+        "id": "A186755",
+        "name": "Trương Minh Đông",
+        "grp_1": 4,
+        "grp_2": 2,
+        "user": "tmdong",
+        "phone": "0364106603"
+    },
+    "6221543": {
+        "id": "A219208",
+        "name": "Hoàng Gia Vương",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "hgvuong",
+        "phone": "0846030479"
+    },
+    "6243989": {
+        "id": "A231644",
+        "name": "Nguyễn Văn Thịnh",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "nvthinh2",
+        "phone": "0328043022"
+    },
+    "6243911": {
+        "id": "A231676",
+        "name": "Phạm Xuân Quang",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "pxquang",
+        "phone": "0984914800"
+    },
+    "6220020": {
+        "id": "A218785",
+        "name": "Huỳnh Văn Hậu",
+        "grp_1": 4,
+        "grp_2": 2,
+        "user": "hvhau",
+        "phone": "0357355855"
+    },
+    "6232951": {
+        "id": "A220616",
+        "name": "Vũ Đình Cao",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "vdcao",
+        "phone": "0333799048"
+    },
+    "6231218": {
+        "id": "A229973",
+        "name": "Lê Việt Hoàng",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "lviethoang",
+        "phone": "0357246090"
+    },
+    "6198241": {
+        "id": "A186906",
+        "name": "Đặng Minh Thiện",
+        "grp_1": 5,
+        "grp_2": 2,
+        "user": "dmthien",
+        "phone": "0389953264"
+    },
+    "6243159": {
+        "id": "A231814",
+        "name": "Đỗ Diệu Trinh",
+        "grp_1": 4,
+        "grp_2": 1,
+        "user": "ddtrinh",
+        "phone": "0901169496"
+    },
+    "6219190": {
+        "id": "A207855",
+        "name": "Nguyễn Minh Quang",
+        "grp_1": 5,
+        "grp_2": 2,
+        "user": "nmquang1",
+        "phone": "0375378824"
+    },
+    "6210394": {
+        "id": "A208059",
+        "name": "Mai Thanh Mẫn",
+        "grp_1": 5,
+        "grp_2": 2,
+        "user": "mtman",
+        "phone": "0989281739"
+    },
+    "6210323": {
+        "id": "A208088",
+        "name": "Phan Đình Khang",
+        "grp_1": 5,
+        "grp_2": 2,
+        "user": "pdinhkhang",
+        "phone": "0913581132"
+    },
+    "6220079": {
+        "id": "A218734",
+        "name": "Trương Anh Hào",
+        "grp_1": 5,
+        "grp_2": 1,
+        "user": "tanhhao",
+        "phone": "0397167333"
+    },
+    "6232302": {
+        "id": "A220067",
+        "name": "Ôn Quân An",
+        "grp_1": 5,
+        "grp_2": 1,
+        "user": "oqan",
+        "phone": "0933184198"
+    },
+    "6232406": {
+        "id": "A220161",
+        "name": "Trà Anh Toàn",
+        "grp_1": 5,
+        "grp_2": 1,
+        "user": "tatoan",
+        "phone": "0375144074"
+    },
+    "6232415": {
+        "id": "A220170",
+        "name": "Trần Phúc Nguyên",
+        "grp_1": 5,
+        "grp_2": 1,
+        "user": "tpnguyen",
+        "phone": "0792516616"
+    },
+    "6166606": {
+        "id": "A154361",
+        "name": "Nguyễn Thị Thu Hương",
+        "grp_1": 7,
+        "grp_2": 2,
+        "user": "nguyenthithuhuong",
+        "phone": "0972488347"
+    },
+    "6187723": {
+        "id": "A175488",
+        "name": "Hồ Minh Trang",
+        "grp_1": 7,
+        "grp_2": 2,
+        "user": "hmtrang",
+        "phone": "0362711759"
+    },
+    "6220088": {
+        "id": "A218743",
+        "name": "Huỳnh Đại Nghĩa",
+        "grp_1": 7,
+        "grp_2": 2,
+        "user": "hdainghia",
+        "phone": "0938386426"
+    },
+    "6220239": {
+        "id": "A218994",
+        "name": "Trương Minh Hoàng",
+        "grp_1": 7,
+        "grp_2": 1,
+        "user": "tminhhoang",
+        "phone": "0937654235"
+    },
+    "6221570": {
+        "id": "A219235",
+        "name": "Phan Văn Hậu",
+        "grp_1": 7,
+        "grp_2": 1,
+        "user": "pvanhau",
+        "phone": "0337245746"
+    },
+    "6221606": {
+        "id": "A219361",
+        "name": "Trương Quang Trường",
+        "grp_1": 7,
+        "grp_2": 1,
+        "user": "tqtruong",
+        "phone": "0987036148"
+    },
+    "5221628": {
+        "id": "T219383",
+        "name": "Đặng Thị Kim Tuyến",
+        "grp_1": 7,
+        "grp_2": 1,
+        "user": "dtkimtuyen",
+        "phone": "0383137940"
+    },
+    "6232878": {
+        "id": "A220533",
+        "name": "Bùi Xuân Trường",
+        "grp_1": 7,
+        "grp_2": 1,
+        "user": "bxuantruong",
+        "phone": "0867887625"
+    },
+    "6221698": {
+        "id": "A219353",
+        "name": "Lê Thị Ngọc Xuân",
+        "grp_1": 6,
+        "grp_2": 1,
+        "user": "ltnxuan",
+        "phone": "0357903110"
+    },
+    "6003150": {
+        "id": "A091815",
+        "name": "Trần Gia Huấn",
+        "grp_1": 7,
+        "grp_2": 3,
+        "user": "tghuan",
+        "phone": "0988305885"
+    },
+    "6187808": {
+        "id": "A175563",
+        "name": "Trần Quang Thái",
+        "grp_1": 6,
+        "grp_2": 3,
+        "user": "tqthai1",
+        "phone": "0909492310"
+    },
+    "6198113": {
+        "id": "A186878",
+        "name": "Nguyễn Thị Huyền Trang",
+        "grp_1": 6,
+        "grp_2": 2,
+        "user": "nthtrang",
+        "phone": "0973007617"
+    },
+    "6210371": {
+        "id": "A208036",
+        "name": "Vũ Xuân Thắng",
+        "grp_1": 6,
+        "grp_2": 2,
+        "user": "vxthang",
+        "phone": "0868610997"
+    },
+    "6220070": {
+        "id": "A218735",
+        "name": "Phạm Thanh Tú",
+        "grp_1": 6,
+        "grp_2": 1,
+        "user": "pttu",
+        "phone": "0983630371"
+    },
+    "6232489": {
+        "id": "A220144",
+        "name": "Bùi Huỳnh Hạo Thiên",
+        "grp_1": 6,
+        "grp_2": 1,
+        "user": "bhhthien",
+        "phone": "0779190018"
+    },
+    "6232532": {
+        "id": "A220297",
+        "name": "Trịnh Văn Hoàng",
+        "grp_1": 6,
+        "grp_2": 1,
+        "user": "tvhoang2",
+        "phone": "0347189089"
+    },
+    "6232271": {
+        "id": "A220936",
+        "name": "Đỗ Thị Bích Trâm",
+        "grp_1": 6,
+        "grp_2": 1,
+        "user": "dtbichtram",
+        "phone": "0373022740"
+    },
+    "6113136": {
+        "id": "A101891",
+        "name": "Nguyễn Thanh Tùng",
+        "grp_1": 2,
+        "grp_2": 2,
+        "user": "nttung",
+        "phone": "0364847968"
+    },
+    "6166626": {
+        "id": "A154381",
+        "name": "Trương Ngọc Nhất",
+        "grp_1": 2,
+        "grp_2": 2,
+        "user": "tnnhat",
+        "phone": "0349824689"
+    },
+    "6113274": {
+        "id": "A101939",
+        "name": "Đặng Trần Tuấn",
+        "grp_1": 2,
+        "grp_2": 3,
+        "user": "dttuan",
+        "phone": "0939988368"
+    },
+    "5198500": {
+        "id": "T186265",
+        "name": "Hoàng Nguyễn Hoài Nam",
+        "grp_1": 2,
+        "grp_2": 2,
+        "user": "hnhnam",
+        "phone": "0358036934"
+    },
+    "6124805": {
+        "id": "A112560",
+        "name": "Thái Tân Xuyên",
+        "grp_1": 2,
+        "grp_2": 3,
+        "user": "ttxuyen",
+        "phone": "0932916716"
+    },
+    "6231216": {
+        "id": "A229971",
+        "name": "Huỳnh Phạm Nhất Triều",
+        "grp_1": 2,
+        "grp_2": 1,
+        "user": "hpntrieu",
+        "phone": "0868814376"
+    },
+    "6232119": {
+        "id": "A220874",
+        "name": "Nguyễn Ngọc Lâm",
+        "grp_1": 2,
+        "grp_2": 1,
+        "user": "nnlam",
+        "phone": "0932768810"
+    },
+    "5109892": {
+        "id": "T197557",
+        "name": "Phạm Bá Phúc",
+        "grp_1": 2,
+        "grp_2": 2,
+        "user": "pbphuc",
+        "phone": "0971524897"
+    },
+    "6187722": {
+        "id": "A175487",
+        "name": "Quách Thị Mỹ Linh",
+        "grp_1": 0,
+        "grp_2": 2,
+        "user": "qtmlinh",
+        "phone": "0978437787"
+    },
+    "6093818": {
+        "id": "A081573",
+        "name": "Trương Hoàng Lĩnh",
+        "grp_1": 0,
+        "grp_2": 4,
+        "user": "thlinh",
+        "phone": "0939821124"
+    },
+    "6108233": {
+        "id": "A196998",
+        "name": "Phan Lê Thanh Tùng",
+        "grp_1": 0,
+        "grp_2": 3,
+        "user": "plthanhtung",
+        "phone": "0908220509"
+    },
+    "6109449": {
+        "id": "A197104",
+        "name": "Trần Đăng Xuân",
+        "grp_1": 0,
+        "grp_2": 2,
+        "user": "tdxuan",
+        "phone": "0778220219"
+    },
+    "6210363": {
+        "id": "A208028",
+        "name": "Nguyễn Văn Dương",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "nvanduong",
+        "phone": "0968933176"
+    },
+    "6231224": {
+        "id": "A229989",
+        "name": "Trần Doãn Tùng",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "tdoantung",
+        "phone": "0939546653"
+    },
+    "6221663": {
+        "id": "A219328",
+        "name": "Nguyễn Nhật Bảo",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "nnhatbao",
+        "phone": "0332003045"
+    },
+    "6232775": {
+        "id": "A220430",
+        "name": "Nguyễn Đoàn Thiên Thương",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "ndtthuong",
+        "phone": "0369884546"
+    },
+    "6232027": {
+        "id": "A220782",
+        "name": "Thống A Thảo",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "tathao",
+        "phone": "0978361274"
+    },
+    "6233583": {
+        "id": "A221248",
+        "name": "Đặng Vĩnh Trường",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "dvinhtruong",
+        "phone": "0908395712"
+    },
+    "6233669": {
+        "id": "A221324",
+        "name": "Nguyễn Việt Bắc",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "nvietbac",
+        "phone": "0976165032"
+    },
+    "6198455": {
+        "id": "A186110",
+        "name": "Trần Huỳnh Tới",
+        "grp_1": 0,
+        "grp_2": 2,
+        "user": "thtoi",
+        "phone": "0396628373"
+    },
+    "6198169": {
+        "id": "A186824",
+        "name": "Võ Tuấn Kiệt",
+        "grp_1": 3,
+        "grp_2": 2,
+        "user": "vtkiet",
+        "phone": "0945944007"
+    },
+    "6992358": {
+        "id": "A980013",
+        "name": "Thái Phạm Văn Hiệp",
+        "grp_1": 5,
+        "grp_2": 4,
+        "user": "tpvhiep",
+        "phone": "0913170573"
+    },
+    "5109074": {
+        "id": "T197739",
+        "name": "Nguyễn Nhật Linh",
+        "grp_1": 0,
+        "grp_2": 2,
+        "user": "nnhatlinh",
+        "phone": "0777107908"
+    },
+    "6243012": {
+        "id": "A231777",
+        "name": "Nguyễn Thế Anh",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "ntanh9",
+        "phone": "0373942807"
+    },
+    "6243032": {
+        "id": "A231797",
+        "name": "Nguyễn Huỳnh Lâm Vũ",
+        "grp_1": 0,
+        "grp_2": 1,
+        "user": "nhlvu",
+        "phone": "0787533271"
+    },
+    "5109054": {
+        "id": "T197719",
+        "name": "Nguyễn Văn Đạo",
+        "grp_1": 3,
+        "grp_2": 2,
+        "user": "nvdao",
+        "phone": "0328594588"
+    },
+    "6198894": {
+        "id": "A186559",
+        "name": "Nguyễn Minh Cầm",
+        "grp_1": 5,
+        "grp_2": 4,
+        "user": "nmcam",
+        "phone": "0344198279"
+    },
+    "6210499": {
+        "id": "A208154",
+        "name": "Thái Hoàng Đăng",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "thdang1",
+        "phone": "0835797644"
+    },
+    "6232123": {
+        "id": "A220888",
+        "name": "Đặng Thái Hiên",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "dthaihien",
+        "phone": "0918826281"
+    },
+    "6232295": {
+        "id": "A220950",
+        "name": "Võ Kim Thạch",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "vkthach",
+        "phone": "0338336530"
+    },
+    "6233668": {
+        "id": "A221323",
+        "name": "Nguyễn Quang Thắng",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "nquangthang",
+        "phone": "0396556179"
+    },
+    "6233692": {
+        "id": "A221357",
+        "name": "Nguyễn Phan Thiện Long",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "nptlong",
+        "phone": "0329093438"
+    },
+    "6243827": {
+        "id": "A231582",
+        "name": "Lê Minh Tuấn",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "lmtuan1",
+        "phone": "0326090840"
+    },
+    "6243971": {
+        "id": "A231636",
+        "name": "Nguyễn Gia Huy",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "nghuy2",
+        "phone": "0917049737"
+    },
+    "6243988": {
+        "id": "A231643",
+        "name": "Võ Bình An",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "vban",
+        "phone": "0849609010"
+    },
+    "6243002": {
+        "id": "A231767",
+        "name": "Võ Thị Kim Ngân",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "vtkimngan",
+        "phone": "0842525075"
+    },
+    "6243014": {
+        "id": "A231779",
+        "name": "Nguyễn Văn Hợp",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "nvhop",
+        "phone": "0376662415"
+    },
+    "6243029": {
+        "id": "A231784",
+        "name": "Nguyễn Quang Chiến",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "nqchien",
+        "phone": "0974890742"
+    },
+    "6243022": {
+        "id": "A231787",
+        "name": "Nguyễn Hoài Tú",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "nhtu2",
+        "phone": "0703103741"
+    },
+    "6243146": {
+        "id": "A231801",
+        "name": "Nguyễn Tuấn Khanh",
+        "grp_1": 3,
+        "grp_2": 3,
+        "user": "ntkhanh1",
+        "phone": "0902115828"
+    },
+    "6243148": {
+        "id": "A231803",
+        "name": "Mai Dương Quyền",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "mdquyen",
+        "phone": "0911983269"
+    },
+    "6243141": {
+        "id": "A231806",
+        "name": "Nguyễn Duy Đăng",
+        "grp_1": 3,
+        "grp_2": 1,
+        "user": "nddang",
+        "phone": "0335441895"
+    }
+}
