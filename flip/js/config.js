@@ -4,21 +4,21 @@ const config = {
     show_archived: true,
     remove_team_in_rounds: [2, 1],
     stage_init: {
-        1: {
-            prizes_num: 1,
-            btn_text: "GO 1"
+        "4": {
+            prizes_num: 3,
+            btn_text: "GO 4"
         },
-        2: {
-            prizes_num: 2,
-            btn_text: "GO 2"
-        },
-        3: {
+        "3": {
             prizes_num: 3,
             btn_text: "GO 3"
         },
-        4: {
-            prizes_num: 5,
-            btn_text: "GO 4"
+        "2": {
+            prizes_num: 2,
+            btn_text: "GO 2"
+        },
+        "1": {
+            prizes_num: 1,
+            btn_text: "GO 1"
         }
     }
 };

@@ -18,22 +18,26 @@ var stageInit = function (){
     data = conf.stage_init;
     const parent = document.getElementById('tab-wrap');
     for (var key in data) {
-        var child = document.createElement('div');
         var val = data[key].prizes_num;
-        child.innerHTML = `<input type="radio" id="tab${key}" name="tabGroup1" class="tab">
-        <label for="tab${key}">Round ${key}</label>
-        <div class="tab__content">
+        var child_ip = document.createElement('div');
+        var child_tab = document.createElement('div');
+        child_ip.innerHTML = `<input type="radio" id="tab${key}" name="tabGroup1" class="tab">
+        <label for="tab${key}">Round ${key}</label>`;
+        child_tab.innerHTML = `<div class="tab__content">
           <h2>Round ${key}</h2>
           <div id="tickerR${key}"></div>
           <div class="input-group mb-3">
             <input id="roundR${key}" type="number" value="${val}" class="form-control" placeholder="Number of prizes" aria-label="Number of prizes" aria-describedby="basic-addon${key}" disabled>
             <div class="input-group-append">
-              <button type="button" class="btn btn-outline-secondary" id="randomBtnR${data[key].btn_text}">GO</button>
+              <button type="button" class="btn btn-outline-secondary" id="randomBtnR${key}">${data[key].btn_text}</button>
             </div>
           </div>
           <table id="randomDataR${key}"></table>
         </div>`;
-        parent.appendChild(child.firstChild);
+        while (child_ip.firstChild){
+            parent.appendChild(child_ip.firstChild);
+        }
+        parent.appendChild(child_tab.firstChild);
     }
 }
 
