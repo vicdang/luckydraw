@@ -153,7 +153,7 @@ var addChampionList = function (r) {
   }
   const parent = document.getElementById("champions-list-ul");
   var child = document.createElement("li");
-  child.innerHTML = `<li class="list-group-item active champ-list-label">Round ${r}</li>
+  child.innerHTML = `<li class="list-group-item active champ-list-label">${conf.stage_init[r].name}</li>
     <li class="list-group-item champ-list" id="champ-${r}"></li>`;
   parent.prepend(child);
 };
@@ -178,7 +178,7 @@ var initRound = function (round, data) {
   var rduser = randomUser(data);
   temp_user = rduser;
   console.log("randomUser: ", rduser);
-  if (conf.animation) {
+  if (conf.animation || conf.test_mode) {
     var n_elem = document.createElement("div");
     var tickerc = `<div id="t-${round}" class="tick col-12" data-value="000" data-did-init="handleTickInit" data-change="${rduser[0]}">
             <div data-repeat="true" data-layout="horizontal fit" data-transform="arrive(9, .00001) -> round -> pad(\'000\') -> split -> delay(rtl,${timer_1},${timer_2})">
@@ -215,11 +215,12 @@ var startRoller = function (data) {
   var btnOk = document.getElementById(`okBtn-${current_round}-${current_roll}`);
   console.log(data, btnAdd, btnRemove);
   data.style.display = "none";
+  if(conf.test_mode===true){t = 0}else{t=conf.delay};
   setTimeout(() => {
     btnAdd.style.display = "";
     btnOk.style.display = "";
     playFireWorks(true);
-  }, 30000);
+  }, t);
 };
 
 var okRoller = function (data) {
@@ -228,14 +229,15 @@ var okRoller = function (data) {
   rduser = temp_user;
   console.log(rduser);
   var ele_table = document.getElementById(`randomData-${round}`);
-  if (conf.show_raw_data) {
+  if (conf.show_raw_data || conf.test_mode) {
     const new_elem = document.createElement("tr");
     new_elem.innerHTML = `<td>${rduser[0]}</td><td>${rduser[1]["team"]}</td>
                           <td>${rduser[1]["priority"]}</td><td>${rduser[1]["name"]}</td>
                           <td>pending</td>`;
+                          console.log('AAAAAAAAAAAAA');console.log(ele_table);
     ele_table.appendChild(new_elem);
   }
-  if (conf.show_archived) {
+  if (conf.show_archived || conf.test_mode) {
     addChampionList(round);
     addChampionBalls(round, rduser[0]);
   }
