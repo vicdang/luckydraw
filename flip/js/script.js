@@ -20,6 +20,19 @@ var handleTickInit = function (tick) {
   //   timer.start();
 };
 
+var initPage = function (data) {
+  const test = ``;
+  const page = `<div class="col-12" id="page-container">
+    <div class="col-8 main-page" id="main-page">
+    <h1 class="main-title">${conf.oraginzation}</br>${conf.main_page_title} ${conf.current_year}</h1>
+    <div class="tab-wrap" id="tab-wrap"></div></div>
+    <div class="col-4 left-page" id="champions-list">
+    <h1 class="winners-title">${conf.champion_title}</h1>
+    <ul class="list-group list-group-flush" id="champions-list-ul"></ul></div></div>
+    <div class="notification-container"><div class="notification"></div></div>`;
+  document.body.innerHTML = test + page;
+};
+
 var loadChampionList = function (data) {
   var screenHeight = window.innerHeight;
   var dynamicDiv = document.getElementById(data);
@@ -142,13 +155,15 @@ var addChampionList = function (r) {
   var child = document.createElement("li");
   child.innerHTML = `<li class="list-group-item active champ-list-label">Round ${r}</li>
     <li class="list-group-item champ-list" id="champ-${r}"></li>`;
-  parent.appendChild(child);
+  parent.prepend(child);
 };
 
 var addChampionBalls = function (r, data) {
   const parent = document.getElementById(`champ-${r}`);
   var child = document.createElement("span");
-  child.innerHTML = `<span class="badge badge-primary">${data}</span>`;
+  child.innerHTML = `<section class="stage">
+  <figure class="ball"><span class="shadow"></span><span class="eight">${data}</span></figure></section>`;
+  //   child.innerHTML = `<span class="badge badge-primary">${data}</span>`;
   parent.appendChild(child);
 };
 
@@ -168,8 +183,8 @@ var initRound = function (round, data) {
     var tickerc = `<div id="t-${round}" class="tick col-12" data-value="000" data-did-init="handleTickInit" data-change="${rduser[0]}">
             <div data-repeat="true" data-layout="horizontal fit" data-transform="arrive(9, .00001) -> round -> pad(\'000\') -> split -> delay(rtl,${timer_1},${timer_2})">
             <span data-view="flip"></span></div></div>
-            <div class="col-12">
-            <button type="button" class="btn btn-outline-success btn-lg btn-block btn-roll col-12" id="rollBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="startRoller(this)">${conf.action_btn.start}</button>
+            <div class="col-12 btn-grp">
+            <button type="button" class="btn btn-outline-danger btn-lg btn-block btn-roll col-12" id="rollBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="startRoller(this)">${conf.action_btn.start}</button>
             <button type="button" class="btn btn-outline-warning btn-lg btn-block btn-add col-6" id="addBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="addRoller(this)" style="display:none;">${conf.action_btn.add}</button>
             <button type="button" class="btn btn-outline-success btn-lg btn-block btn-ok col-6" id="okBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" data-round="${round}" onclick="okRoller(this)" style="display:none;">${conf.action_btn.accept}</button></div>`;
     n_elem.innerHTML = tickerc;
@@ -200,9 +215,11 @@ var startRoller = function (data) {
   var btnOk = document.getElementById(`okBtn-${current_round}-${current_roll}`);
   console.log(data, btnAdd, btnRemove);
   data.style.display = "none";
-  btnAdd.style.display = "";
-  btnOk.style.display = "";
-  playFireWorks(true);
+  setTimeout(() => {
+    btnAdd.style.display = "";
+    btnOk.style.display = "";
+    playFireWorks(true);
+  }, 30000);
 };
 
 var okRoller = function (data) {
@@ -229,6 +246,7 @@ var okRoller = function (data) {
   data.disabled = true;
   console.log(archived);
   document.getElementById(`addBtn-${round}-${rduser[0]}`).click();
+  playFireWorks(false);
 };
 
 var addRoller = function (data) {
@@ -240,13 +258,14 @@ var addRoller = function (data) {
       `Reached the Maximum ${conf.stage_init[current_round].max} prizes of round ${current_round}`
     );
     var next_round = round - 1;
-    if ( next_round > 0) {
-        document.getElementById(`tab-${next_round}`).click();
+    if (next_round > 0) {
+      document.getElementById(`tab-${next_round}`).click();
     } else {
-        endGame();
+      endGame();
     }
   }
   data.disabled = true;
+  playFireWorks(false);
 };
 
 var setRoundStage = function (data) {
@@ -255,8 +274,11 @@ var setRoundStage = function (data) {
   initRound(current_round, userData);
 };
 
-var playFireWorks = function (data) {
-  const page = "#main-page";
+var playFireWorks = function (data, p) {
+  var page = "body";
+  if (p) {
+    page = p;
+  }
   const container = $(page);
   if (data === true) {
     container.fireworks();
@@ -266,19 +288,20 @@ var playFireWorks = function (data) {
 };
 
 var endGame = function (params) {
-    playFireWorks(false);
-    document.getElementById('main-page').classList.add('fade-out');
-    const cl = document.getElementById('champions-list');
-    setTimeout(function(){
-        document.getElementById('main-page').style.display = "none";
-        cl.classList.remove('col-4');
-        cl.classList.add('col-12');
-    },3000);
-}
+  playFireWorks(false);
+  playFireWorks(true, "#champions-list");
+  document.getElementById("main-page").classList.add("fade-out");
+  const cl = document.getElementById("champions-list");
+  setTimeout(function () {
+    document.getElementById("main-page").style.display = "none";
+    cl.classList.remove("col-4");
+    cl.classList.add("col-12");
+  }, 3000);
+};
 
 var showNotification = function (data) {
   const notification = document.querySelector(".notification-container");
-  notification.querySelector('.notification').textContent = data;
+  notification.querySelector(".notification").textContent = data;
   notification.style.display = "block"; // Set the display property to 'block'
   setTimeout(hideNotification, 5000);
 };
@@ -290,7 +313,6 @@ var hideNotification = function (data) {
 };
 
 var init = function () {
-  loadChampionList("page-container");
   getData(data_file)
     .then(() => {
       initStage();
@@ -299,6 +321,9 @@ var init = function () {
       // Handle errors if getData() fails
       console.error("Error while getting data:", error);
     });
+  document.title = `${conf.app_name} ${conf.current_year}`;
+  initPage();
+  loadChampionList("page-container");
 };
 
 window.onload = function () {
