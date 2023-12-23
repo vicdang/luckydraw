@@ -196,7 +196,7 @@ var isMaxPrize = function (round) {
 };
 
 var startRoller = function (data) {
-  playSound(conf.sound_effect.rolling[Math.floor(Math.random() * conf.sound_effect.rolling.length)]);
+  playSound(conf.sound_effect.rolling[Math.floor(Math.random() * conf.sound_effect.rolling.length)], true);
   current_roll = data.getAttribute("data-id");
   timers[current_roll].start();
   var btnAdd = document.getElementById(
@@ -204,13 +204,13 @@ var startRoller = function (data) {
   );
   var btnOk = document.getElementById(`okBtn-${current_round}-${current_roll}`);
   data.style.display = "none";
-  if(conf.test_mode===true){t = 0}else{t=conf.delay};
+  if (conf.test_mode === true) { t = 0 } else { t = conf.delay };
   setTimeout(() => {
     btnAdd.style.display = "";
     btnOk.style.display = "";
     playFireWorks(true);
     timers[current_roll].stop();
-    playSound(conf.sound_effect.win_roll);
+    playSound(conf.sound_effect.win_roll, false);
   }, t);
 };
 
@@ -236,7 +236,7 @@ var okRoller = function (data) {
   archived[round].push(rduser[0]);
   data.disabled = true;
   document.getElementById(`addBtn-${round}-${rduser[0]}`).click();
-  playSound(conf.sound_effect.approve);
+  playSound(conf.sound_effect.approve, false);
   playFireWorks(false);
 };
 
@@ -251,7 +251,7 @@ var addRoller = function (data) {
     var next_round = round - 1;
     if (next_round > 0) {
       document.getElementById(`tab-${next_round}`).click();
-      playSound(conf.sound_effect.end_round);
+      playSound(conf.sound_effect.end_round, false);
     } else {
       endGame();
     }
@@ -294,9 +294,7 @@ var endGame = function (params) {
 
 var playSound = function (fileName, loop) {
   var audio = document.getElementById('audioPlayer');
-  if(loop===true){
-    audio.loop = true;
-  }
+  if (loop === true) { audio.loop = true } else { audio.loop = false };
   audio.src = `./sound/${fileName}`; // Set the source of the audio element
   audio.play();
 }
