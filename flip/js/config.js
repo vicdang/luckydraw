@@ -1,5 +1,5 @@
 const config = {
-    test_mode: true,
+    test_mode: false,
     animation: true,
     show_raw_data: false,
     show_archived: true,
@@ -11,6 +11,13 @@ const config = {
     oraginzation: "DC26",
     main_page_title: "Vòng Quay Nhân Phẩm",
     champion_title: "Thắng Giải",
+    sound_effect: {
+        win_roll: "LevelComplete.mp3",
+        end_round: "CastleComplete.mp3",
+        rolling: ["Underground.mp3", "Underwater.mp3", "Castle.mp3", "Invincibility.mp3", "mario.mp3", "NameEntry.mp3"],
+        end_game: "SavedPrincess.mp3",
+        approve: "pipe.mp3"
+    },
     action_btn: {
         start: "Bắt Đầu",
         add: "Tạo Mới",

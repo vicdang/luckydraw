@@ -28,7 +28,8 @@ var initPage = function (data) {
     <div class="col-4 left-page" id="champions-list">
     <h1 class="winners-title">${conf.champion_title}</h1>
     <ul class="list-group list-group-flush" id="champions-list-ul"></ul></div></div>
-    <div class="notification-container"><div class="notification"></div></div>`;
+    <div class="notification-container"><div class="notification"></div></div>
+    <div class="audio-container"><audio id="audioPlayer" preload="auto"><source src="" type="audio/mpeg"></audio></div>`;
   document.body.innerHTML = test + page;
 };
 
@@ -195,13 +196,11 @@ var isMaxPrize = function (round) {
 };
 
 var startRoller = function (data) {
+  playSound(conf.sound_effect.rolling[Math.floor(Math.random() * conf.sound_effect.rolling.length)]);
   current_roll = data.getAttribute("data-id");
   timers[current_roll].start();
   var btnAdd = document.getElementById(
     `addBtn-${current_round}-${current_roll}`
-  );
-  var btnRemove = document.getElementById(
-    `removeBtn-${current_round}-${current_roll}`
   );
   var btnOk = document.getElementById(`okBtn-${current_round}-${current_roll}`);
   data.style.display = "none";
@@ -211,6 +210,7 @@ var startRoller = function (data) {
     btnOk.style.display = "";
     playFireWorks(true);
     timers[current_roll].stop();
+    playSound(conf.sound_effect.win_roll);
   }, t);
 };
 
@@ -236,6 +236,7 @@ var okRoller = function (data) {
   archived[round].push(rduser[0]);
   data.disabled = true;
   document.getElementById(`addBtn-${round}-${rduser[0]}`).click();
+  playSound(conf.sound_effect.approve);
   playFireWorks(false);
 };
 
@@ -250,6 +251,7 @@ var addRoller = function (data) {
     var next_round = round - 1;
     if (next_round > 0) {
       document.getElementById(`tab-${next_round}`).click();
+      playSound(conf.sound_effect.end_round);
     } else {
       endGame();
     }
@@ -286,8 +288,18 @@ var endGame = function (params) {
     document.getElementById("main-page").style.display = "none";
     cl.classList.remove("col-4");
     cl.classList.add("col-12");
+    playSound(conf.sound_effect.end_game, true);
   }, 3000);
 };
+
+var playSound = function (fileName, loop) {
+  var audio = document.getElementById('audioPlayer');
+  if(loop===true){
+    audio.loop = true;
+  }
+  audio.src = `./sound/${fileName}`; // Set the source of the audio element
+  audio.play();
+}
 
 var showNotification = function (data) {
   const notification = document.querySelector(".notification-container");
