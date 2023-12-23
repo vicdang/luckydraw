@@ -4106,6 +4106,8 @@ var setTimer = function setTimer(cb) {
         // calculate total runtime
         var runtime = currentTime - tickStartTime - totalSleepTime + timeoutErrorOffset;
 
+		console.log(currentTime, timeoutErrorOffset, runtime)
+
         // let others know total runtime of counter
         cb(runtime);
 

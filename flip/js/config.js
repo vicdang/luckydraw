@@ -1,9 +1,10 @@
 const config = {
     test_mode: true,
     animation: true,
-    show_raw_data: true,
+    show_raw_data: false,
     show_archived: true,
     delay:30000,
+    data_file: "data.json",
     remove_team_in_rounds: [2, 1],
     app_name: "Vòng Quay Nhân Phẩm",
     current_year: 2023,

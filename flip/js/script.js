@@ -1,9 +1,9 @@
-const data_file = "data.json";
+var conf = config;
+const data_file = conf.data_file;
 let userData;
 let temp_user;
 let archived = {};
 var current_round = 0;
-var conf = config;
 var timers = {};
 
 var handleTickInit = function (tick) {
@@ -16,7 +16,6 @@ var handleTickInit = function (tick) {
     { autostart: false }
   );
   timers[val] = timer;
-  console.log(timers);
   //   timer.start();
 };
 
@@ -24,7 +23,7 @@ var initPage = function (data) {
   const test = ``;
   const page = `<div class="col-12" id="page-container">
     <div class="col-8 main-page" id="main-page">
-    <h1 class="main-title">${conf.oraginzation}</br>${conf.main_page_title} ${conf.current_year}</h1>
+    <h1 class="main-title">${conf.oraginzation} - ${conf.current_year}</br>${conf.main_page_title}</h1>
     <div class="tab-wrap" id="tab-wrap"></div></div>
     <div class="col-4 left-page" id="champions-list">
     <h1 class="winners-title">${conf.champion_title}</h1>
@@ -104,7 +103,6 @@ var randomUser = function (data) {
   } else {
     randomObject = getRandomObjectFromDict(data);
   }
-  console.log("randomUser: ", randomObject, data);
   if (randomObject) {
     return randomObject;
   } else {
@@ -125,7 +123,6 @@ var getRandomObjectFromDict = function (obj) {
   var keys = Object.keys(obj);
   if (keys.length > 0) {
     var rd = (keys.length * Math.random()) << 0;
-    console.log("getRandomObjectFromDict: ", rd, obj);
     return [keys[rd], obj[keys[rd]]];
   } else {
     return null;
@@ -133,7 +130,6 @@ var getRandomObjectFromDict = function (obj) {
 };
 
 var removeUser = function (mid) {
-  console.log("removeUser: ", mid);
   delete userData[mid];
 };
 
@@ -163,21 +159,16 @@ var addChampionBalls = function (r, data) {
   var child = document.createElement("span");
   child.innerHTML = `<section class="stage">
   <figure class="ball"><span class="shadow"></span><span class="eight">${data}</span></figure></section>`;
-  //   child.innerHTML = `<span class="badge badge-primary">${data}</span>`;
   parent.appendChild(child);
 };
 
 var initRound = function (round, data) {
-  console.log(round);
-  console.log(data);
   var ele_tk = document.getElementById(`ticker-${round}`);
   ele_tk.innerHTML = "";
-  //   var timer = (5 - round) * 1000;
-  var timer_1 = (3 - round) * 1000;
-  var timer_2 = (4 - round) * 1000;
+  var timer_1 = 1 * 1000;
+  var timer_2 = 1 * 1000;
   var rduser = randomUser(data);
   temp_user = rduser;
-  console.log("randomUser: ", rduser);
   if (conf.animation || conf.test_mode) {
     var n_elem = document.createElement("div");
     var tickerc = `<div id="t-${round}" class="tick col-12" data-value="000" data-did-init="handleTickInit" data-change="${rduser[0]}">
@@ -213,13 +204,13 @@ var startRoller = function (data) {
     `removeBtn-${current_round}-${current_roll}`
   );
   var btnOk = document.getElementById(`okBtn-${current_round}-${current_roll}`);
-  console.log(data, btnAdd, btnRemove);
   data.style.display = "none";
   if(conf.test_mode===true){t = 0}else{t=conf.delay};
   setTimeout(() => {
     btnAdd.style.display = "";
     btnOk.style.display = "";
     playFireWorks(true);
+    timers[current_roll].stop();
   }, t);
 };
 
@@ -227,14 +218,12 @@ var okRoller = function (data) {
   current_roll = data.getAttribute("data-id");
   round = data.getAttribute("data-round");
   rduser = temp_user;
-  console.log(rduser);
   var ele_table = document.getElementById(`randomData-${round}`);
   if (conf.show_raw_data || conf.test_mode) {
     const new_elem = document.createElement("tr");
     new_elem.innerHTML = `<td>${rduser[0]}</td><td>${rduser[1]["team"]}</td>
                           <td>${rduser[1]["priority"]}</td><td>${rduser[1]["name"]}</td>
                           <td>pending</td>`;
-                          console.log('AAAAAAAAAAAAA');console.log(ele_table);
     ele_table.appendChild(new_elem);
   }
   if (conf.show_archived || conf.test_mode) {
@@ -246,7 +235,6 @@ var okRoller = function (data) {
   }
   archived[round].push(rduser[0]);
   data.disabled = true;
-  console.log(archived);
   document.getElementById(`addBtn-${round}-${rduser[0]}`).click();
   playFireWorks(false);
 };
