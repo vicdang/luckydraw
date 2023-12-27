@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'pasternake'; /* Give your font a name */
+  src: url('../fonts/SVN-Pasternak.otf') format('opentype'); /* Path to your .otf file */
+}
+
+@font-face {
+  font-family: 'housttely'; /* Give your font a name */
+  src: url('../fonts/SVN-Housttely\ Signature.otf') format('opentype'); /* Path to your .otf file */
+}
+
+@font-face {
+  font-family: 'tangerine'; /* Give your font a name */
+  src: url('../fonts/SVN-Tangerine\ HB.otf') format('opentype'); /* Path to your .otf file */
+}
+
 /* Custom styles for the lucky draw tool */
 .tab-wrap {
   transition: 0.3s box-shadow ease;
@@ -142,11 +157,12 @@
 body {
   /* padding: 30px 0; */
   font-weight: 300;
-  /* background-color: var(--bs-primary); */
-  background-color: var(--bs-dark);
+  background-color: var(--bs-primary);
+  /* background-color: var(--bs-dark); */
   color: var(--bs-white);
-  font-family: 'calibri';
+  font-family: 'tangerine';
   font-weight: bold;
+  /* background-image: url('../img/bg.png'); */
 }
 
 .container {
@@ -174,6 +190,7 @@ h2 {
 
 h3 {
   font-weight: 400;
+  text-align: center;
 }
 
 p {
@@ -273,6 +290,7 @@ td {
   overflow-y: auto;
   background-color: transparent;
   border: none;
+  animation: bubble-anim 2s ease-out infinite;
   /* border: solid #253241;
   border-bottom: 1px;
   border-left: 1px; */
@@ -283,14 +301,18 @@ td {
   text-align: center;
 }
 
+.round-title {
+  text-align: center;
+  animation: bubble-anim 2s ease-out infinite;
+}
+
 .badge {
   line-height: 2.2;
   font-size: 28px;
-  border-radius: 50%;
+  border-radius: 10px;
   margin: 4px;
-  background: var(--bs-black);
-  background: radial-gradient(circle at 20px 20px, var(--bs-primary), var(--bs-black));
-  animation: bubble-anim 5s ease-out infinite;
+  background: radial-gradient(circle at 20px 20px, var(--bs-red), var(--bs-red));
+  animation: bubble-anim 20s ease-out infinite;
   /* animation-name: fadeIn;
   animation-duration: 5s; */
 }
@@ -363,7 +385,12 @@ ul {
 
 .main-title {
   font-size: 70px;
-  text-transform: uppercase;
+  color: var(--bs-light-yellow);
+  font-family: "pasternake";
+  text-transform: capitalize;
+  text-shadow: 0 0 15px rgba(248, 224, 128, 0.8), /* White shadow */
+               0 0 25px rgba(248, 224, 128, 0.5), /* Lighter white shadow */
+               0 0 35px rgba(248, 224, 128, 0.3);
 }
 
 canvas {
@@ -532,6 +559,26 @@ canvas {
   100% {
     transform: scale(1);
   }
+}
+
+@keyframes text-scrolling-left {
+  from { -webkit-transform: translateX(100%); }
+  to { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes text-scrolling-right {
+  from { -webkit-transform: translateX(-100%); }
+  to { -webkit-transform: translateX(100%); }
+}
+
+@keyframes text-scrolling-up {
+  from { -webkit-transform: translateY(100%); }
+  to { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes text-scrolling-down {
+  from { -webkit-transform: translateY(-100%); }
+  to { -webkit-transform: translateY(100%); }
 }
 
 .btn-grp {
