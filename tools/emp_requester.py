@@ -30,11 +30,31 @@ logger.setLevel("DEBUG")
 
 
 class APIClient(object):
+   """_summary_
+
+   Args:
+       object (_type_): _description_
+   """
+
    def __init__(self, base_url, headers):
+      """_summary_
+
+      Args:
+          base_url (_type_): _description_
+          headers (_type_): _description_
+      """
       self.base_url = base_url
       self.headers = headers
 
    def make_request(self, project_id):
+      """_summary_
+
+      Args:
+          project_id (_type_): _description_
+
+      Returns:
+          _type_: _description_
+      """
       params = {
          "tf[favorite_contact][]": "",
          "tf[project_id][]": project_id,
@@ -53,6 +73,11 @@ class EmpRequester(object):
    """docstring for EmpRequester"""
 
    def __init__(self, arg):
+      """_summary_
+
+      Args:
+          arg (_type_): _description_
+      """
       super(EmpRequester, self).__init__()
       self.arg = arg
       self.project_id = arg.project_id
@@ -84,6 +109,11 @@ class EmpRequester(object):
       self.extracted_data = []
 
    def run(self):
+      """_summary_
+
+      Returns:
+          _type_: _description_
+      """
       page_num = 1
       while True:
          client = APIClient(self.base_url + str(page_num), self.headers)
@@ -108,12 +138,25 @@ class Util(object):
    """docstring for Exporter"""
 
    def __init__(self, arg):
+      """_summary_
+
+      Args:
+          arg (_type_): _description_
+      """
       super(Util, self).__init__()
       self.arg = arg
       pass
 
    @staticmethod
    def extract_data_from_html(soup):
+      """_summary_
+
+      Args:
+          soup (_type_): _description_
+
+      Returns:
+          _type_: _description_
+      """
       # Example extraction: Find employee names with specific class
       # 'employee-name'
       script_tags = soup.find_all('script', string=re.compile(
@@ -141,6 +184,12 @@ class Util(object):
 
    @staticmethod
    def extract_data_from_list(data, file):
+      """_summary_
+
+      Args:
+          data (_type_): _description_
+          file (_type_): _description_
+      """
       wb = Workbook()
       sheet = wb.active
       # Set column headers
@@ -155,6 +204,14 @@ class Util(object):
 
    @staticmethod
    def check_end_data(soup):
+      """_summary_
+
+      Args:
+          soup (_type_): _description_
+
+      Returns:
+          _type_: _description_
+      """
       ul_element = soup.find('ul', class_='paging top')
       if ul_element:
          li_element = ul_element.find('li', class_='desc')
@@ -168,6 +225,11 @@ class Util(object):
 
 
 def setup_argparse():
+   """_summary_
+
+   Returns:
+       _type_: _description_
+   """
    parser = argparse.ArgumentParser(description="Make an API request")
    parser.add_argument("-p", "--project-id", dest="project_id",
                        default="1869", type=str,
@@ -181,11 +243,10 @@ def setup_argparse():
 
 
 def setup_logging(debug=False):
-   """
-   Setup the logging configuration.
+   """_summary_
 
    Args:
-   - debug (bool): Debug flag (default: False).
+       debug (bool, optional): _description_. Defaults to False.
    """
    if debug:
       log_level = logging.DEBUG
@@ -202,12 +263,22 @@ def setup_logging(debug=False):
 
 
 def main(arguments):
+   """_summary_
+
+   Args:
+       arguments (_type_): _description_
+
+   Returns:
+       _type_: _description_
+   """
    emp = EmpRequester(arguments)
    emp.run()
    return emp.extracted_data
 
 
 if __name__ == "__main__":
+   """_summary_
+   """
    args = setup_argparse()
    setup_logging(args.debug)
    main(args)

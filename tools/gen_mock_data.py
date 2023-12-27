@@ -4,7 +4,15 @@ import logging
 import argparse
 
 class DataGenerator:
+    """_summary_
+    """
     def __init__(self, output, max_entries):
+        """_summary_
+
+        Args:
+            output (_type_): _description_
+            max_entries (_type_): _description_
+        """
         self.first_names = ["John", "Mary", "George", "Sarah", "Michael", "Emily", "David", "Jessica", "James", "Jennifer"]
         self.last_names = ["Doe", "Peterson", "Hansen", "Smith", "Johnson", "Brown", "Wilson", "Taylor", "Jones", "Davis"]
         self.team = [0, 1, 2, 3, 4, 5, 6, 7]
@@ -14,10 +22,11 @@ class DataGenerator:
         self.format = "000"
         self.output = "../" + output
         self.max_entries = max_entries
-
         self.setup_logging()
 
     def setup_logging(self):
+        """_summary_
+        """
         # Configure logging
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.INFO)
@@ -27,6 +36,15 @@ class DataGenerator:
         self.logger.addHandler(stream_handler)
 
     def format_number(self, number, template):
+        """_summary_
+
+        Args:
+            number (_type_): _description_
+            template (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         number_str = str(number)
         
         if len(number_str) >= len(template):
@@ -37,6 +55,11 @@ class DataGenerator:
             return formatted
 
     def generate_data(self):
+        """_summary_
+
+        Returns:
+            _type_: _description_
+        """
         # Create data for specified number of people with random names
         people_data = {}
         for i in range(1, self.max_entries):
@@ -52,18 +75,30 @@ class DataGenerator:
         return people_data
 
     def export_data(self, data):
+        """_summary_
+
+        Args:
+            data (_type_): _description_
+        """
         # Save the data to a JSON file
         with open(self.output, "w") as json_file:
             json.dump(data, json_file, indent=2)
         self.logger.info(f"Data has been exported to {self.output}")
 
 def parse_arguments():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     parser = argparse.ArgumentParser(description='Generate mock data and export to JSON.')
     parser.add_argument('-o', '--output', type=str, default='mock_data.json', help='Output file path')
     parser.add_argument('-m', '--max_entries', type=int, default=102, help='Maximum number of data entries to generate')
     return parser.parse_args()
 
 if __name__ == '__main__':
+    """_summary_
+    """
     args = parse_arguments()
 
     generator = DataGenerator(args.output, args.max_entries)
