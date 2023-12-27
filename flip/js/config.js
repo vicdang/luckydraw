@@ -1,7 +1,7 @@
 const config = {
     test_mode: false,
     animation: true,
-    show_raw_data: true,
+    show_raw_data: false,
     show_archived: true,
     delay:30000,
     data_file: "data.json",
