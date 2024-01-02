@@ -1,9 +1,12 @@
 const config = {
-    test_mode: false,
-    animation: true,
-    show_raw_data: false,
-    show_archived: true,
-    delay:30000,
+    test_mode: true, // Enable test mode, default : false
+    animation: true, // Enable rolling animation, default : true
+    show_raw_data: false, // Enable show raw data table, default : false
+    show_archived: true, // Enable show achived result, default : true
+    fire_works: true, // Enable play fire works, default : true
+    show_timer: false, // Enable show timer per roll, default : false
+    play_sound: true, // Enable play sound per roll, default : true
+    delay: 25000,
     data_file: "data.json",
     remove_team_in_rounds: [1, 2],
     app_name: "Vòng Quay Nhân Phẩm",
@@ -44,17 +47,17 @@ const config = {
             round: 2,
             max: 2,
             checked: false,
-            skip: [2],
+            skip: [],
         },
         "3": {
             name: "Giải Hơi Bự",
             round: 3,
             max: 3,
             checked: false,
-            skip: [4, 3],
+            skip: [4],
         },
         "4": {
-            name: "Giải Vui Vui",
+            name: "Giải Vui Vẻ",
             round: 4,
             max: 3,
             checked: true,

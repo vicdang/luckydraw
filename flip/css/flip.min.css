@@ -27,6 +27,7 @@
 }
 
 .tick .tick-credits {
+    display: none;
     position: absolute;
     right: 0;
     bottom: 0;

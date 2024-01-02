@@ -5,6 +5,9 @@ let temp_user;
 let archived = {};
 var current_round = 0;
 var timers = {};
+let timerInterval;
+var timerDisplay;
+let seconds = 0;
 
 var handleTickInit = function (tick) {
   var val = tick._viewDefinition.root.attributes["data-change"].value;
@@ -29,7 +32,8 @@ var initPage = function (data) {
     <div class="col-4 left-page" id="champions-list">
     <h1 class="winners-title">${conf.champion_title}</h1>
     <ul class="list-group list-group-flush" id="champions-list-ul"></ul></div></div>
-    <div class="notification-container"><div class="notification"></div></div>
+    <span id="wtimer" class="notification-container"></span>
+    <div id="nc" class="notification-container"><div class="notification"></div></div>
     <div class="audio-container"><audio id="audioPlayer" preload="auto"><source src="" type="audio/mpeg"></audio></div>`;
   document.body.innerHTML = test + page;
 };
@@ -138,9 +142,9 @@ var filterDataByGrp = function (jsonData, grp, ValueToFilter) {
   Object.keys(jsonData)
     .filter((key) => jsonData[key][grp] === ValueToFilter)
     .forEach((key) => {
+      console.log('Deleted', grp, jsonData[key]);
       delete jsonData[key];
     });
-
   return jsonData;
 };
 
@@ -166,8 +170,8 @@ var addChampionBalls = function (r, data) {
 var initRound = function (round, data) {
   var ele_tk = document.getElementById(`ticker-${round}`);
   ele_tk.innerHTML = "";
-  var timer_1 = 1 * 1000;
-  var timer_2 = 1 * 1000;
+  var timer_1 = 1 * 100;
+  var timer_2 = 1 * 100;
   var l = conf.stage_init[round].skip;
   var rduser;
   if (l) {
@@ -179,9 +183,12 @@ var initRound = function (round, data) {
   temp_user = rduser;
   if (conf.test_mode || conf.animation) {
     var n_elem = document.createElement("div");
-    var tickerc = `<div id="t-${round}" class="tick col-12" data-value="000" data-did-init="handleTickInit" data-change="${rduser[0]}">
-            <div data-repeat="true" data-layout="horizontal fit" data-transform="arrive(9, .00001) -> round -> pad(\'000\') -> split -> delay(rtl,${timer_1},${timer_2})">
-            <span data-view="flip"></span></div></div>`;
+    // var tickerc = `<div id="t-${round}" class="tick col-12" data-value="0" data-did-init="handleTickInit" data-change="${rduser[0]}">
+    //         <div data-repeat="true" data-layout="horizontal fit" data-transform="arrive(9, .000001) -> round -> pad(\'      \') -> split -> delay(random,${timer_1},${timer_2})">
+    //         <span data-view="flip"></span></div></div>`;
+    var tickerc = `<div id="t-${round}" class="tick col-12" data-value="0" data-did-init="handleTickInit" data-change="${rduser[0]}">
+    <div data-layout="horizontal fit" data-repeat="false" data-transform="arrive(999, .0009) -> round -> pad('000000') -> split -> delay(random, 3000, 3000)">
+    <span data-view="flip"></span></div><h1 class="winner" id="winner-${round}"></h1></div>`;
     n_elem.innerHTML = tickerc;
     ele_tk.appendChild(Tick.DOM.create(n_elem, { value: 0 }).root);
     Tick.DOM.parse(n_elem);
@@ -205,6 +212,10 @@ var isMaxPrize = function (round) {
 };
 
 var startRoller = function (data) {
+  if (conf.show_timer) {
+    stopTimer();
+    startTimer();
+  }
   playSound(
     conf.sound_effect.rolling[
       Math.floor(Math.random() * conf.sound_effect.rolling.length)
@@ -215,7 +226,7 @@ var startRoller = function (data) {
   if (conf.test_mode || conf.animation) {
     timers[current_roll].start();
   }
-  var ele_table = document.getElementById(`randomData-${current_round}`);
+  var winner = document.getElementById(`winner-${current_round}`);
   var btnAdd = document.getElementById(
     `addBtn-${current_round}-${current_roll}`
   );
@@ -227,6 +238,7 @@ var startRoller = function (data) {
     t = conf.delay;
   }
   if (conf.test_mode || conf.show_raw_data) {
+    var ele_table = document.getElementById(`randomData-${current_round}`);
     const new_elem = document.createElement("tr");
     new_elem.innerHTML = `<td>${temp_user[0]}</td><td>${temp_user[1]["team"]}</td>
                           <td>${temp_user[1]["priority"]}</td><td>${temp_user[1]["name"]}</td>
@@ -236,6 +248,7 @@ var startRoller = function (data) {
   setTimeout(() => {
     btnAdd.style.display = "";
     btnOk.style.display = "";
+    winner.textContent = temp_user[1]["name"];
     playFireWorks(true);
     if (conf.test_mode || conf.animation) {
         timers[current_roll].stop();
@@ -254,6 +267,9 @@ var okRoller = function (data) {
   }
   if (conf.remove_team_in_rounds.indexOf(parseInt(round)) !== -1) {
     userData = filterDataByGrp(userData, "team", rduser[1]["team"]);
+  }
+  if (rduser[1]['subteam']) {
+    userData = filterDataByGrp(userData, "subteam", rduser[1]["subteam"]);
   }
   archived[round].push(rduser[0]);
   console.log(archived);
@@ -290,15 +306,17 @@ var setRoundStage = function (data) {
 };
 
 var playFireWorks = function (data, p) {
-  var page = "body";
-  if (p) {
-    page = p;
-  }
-  const container = $(page);
-  if (data === true) {
-    container.fireworks();
-  } else {
-    container.fireworks("destroy");
+  if (conf.test_mode || conf.fire_works) {
+    var page = "body";
+    if (p) {
+      page = p;
+    }
+    const container = $(page);
+    if (data === true) {
+      container.fireworks();
+    } else {
+      container.fireworks("destroy");
+    }
   }
 };
 
@@ -316,18 +334,47 @@ var endGame = function (params) {
 };
 
 var playSound = function (fileName, loop) {
-  var audio = document.getElementById("audioPlayer");
-  if (loop === true) {
-    audio.loop = true;
-  } else {
-    audio.loop = false;
+    if (conf.test_mode || conf.play_sound) {
+    var audio = document.getElementById("audioPlayer");
+    if (loop === true) {
+      audio.loop = true;
+    } else {
+      audio.loop = false;
+    }
+    audio.src = `./flip/sound/${fileName}`; // Set the source of the audio element
+    audio.play();
   }
-  audio.src = `./flip/sound/${fileName}`; // Set the source of the audio element
-  audio.play();
 };
 
+var initTimer = function (params) {
+  timerDisplay = document.getElementById('wtimer');
+}
+
+var updateTimer = function () {
+    seconds++;
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+    var data = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`
+    console.log(data);
+    timerDisplay.textContent = data;
+}
+
+var startTimer = function () {
+  if (!timerInterval) {
+      timerInterval = setInterval(updateTimer, 1000);
+      console.log(timerInterval)
+  }
+}
+
+var stopTimer = function() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    seconds = 0;
+}
+
 var showNotification = function (data) {
-  const notification = document.querySelector(".notification-container");
+  const notification = document.querySelector("#nc");
   notification.querySelector(".notification").textContent = data;
   notification.style.display = "block"; // Set the display property to 'block'
   setTimeout(hideNotification, 5000);
@@ -335,7 +382,7 @@ var showNotification = function (data) {
 
 // Function to hide the notification
 var hideNotification = function (data) {
-  const notification = document.querySelector(".notification-container");
+  const notification = document.querySelector("#nc");
   notification.style.display = "none"; // Set the display property to 'none'
 };
 
@@ -351,6 +398,7 @@ var init = function () {
   document.title = `${conf.app_name} ${conf.current_year}`;
   initPage();
   loadChampionList("page-container");
+  initTimer();
 };
 
 window.onload = function () {

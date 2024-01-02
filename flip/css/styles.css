@@ -290,7 +290,7 @@ td {
   overflow-y: auto;
   background-color: transparent;
   border: none;
-  animation: bubble-anim 2s ease-out infinite;
+  /* animation: bubble-anim 2s ease-out infinite; */
   /* border: solid #253241;
   border-bottom: 1px;
   border-left: 1px; */
@@ -445,6 +445,7 @@ canvas {
   margin: 7px;
   perspective: 400px;
   perspective-origin: 50% 50%;
+  animation: bubble-anim 2s ease-out infinite;
 }
 
 .ball .shadow {
@@ -502,11 +503,23 @@ canvas {
   transform: translateX(22px) translateY(-20px) skewX(15deg) skewY(2deg);
   color: var(--bs-white);
   font-family: Arial;
-  font-size: 43px;
+  /* font-size: 43px; */
+  font-size: 23px;
   line-height: 100px;
   float: left;
   position: relative;
   animation: move-eye-skew 5s ease-out infinite;
+}
+
+#wtimer {
+  display: block;
+  right: 10px;
+}
+
+.winner {
+  font-family: 'arial';
+  font-size: 60px;
+  padding: 30px 0px;
 }
 
 @keyframes move-eye-skew {

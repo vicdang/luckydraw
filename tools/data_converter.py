@@ -1,9 +1,26 @@
-# python script_name.py -i data.xlsx -o data.json
+# -*- coding: utf-8 -*-
+# vim:ts=3:sw=3:expandtabs
+"""
+---------------------------
+Copyright (C) 2023
+@Authors: dnnvu
+@Date: 28-Nov-23
+@Version: 1.0
+---------------------------
+ Location:
+   - src
+ Usage example:
+   - python script_name.py -i data.xlsx -o data.json
+"""
 
+# Import
 import argparse
 import pandas as pd
 import json
 import logging
+
+# Logger
+logger = logging.getLogger(__name__)
 
 class ExcelToJsonConverter:
     """_summary_
@@ -21,7 +38,8 @@ class ExcelToJsonConverter:
         """_summary_
         """
         # Read Excel file into a pandas DataFrame, specifying 'ID' column as string to preserve leading zeros
-        self.data = pd.read_excel(self.excel_file_path, dtype={'mid': str})
+        self.data = pd.read_excel(self.excel_file_path, dtype={'uid': str})
+        # logger.debug(self.data)
 
         # Set the first column as the index (assuming it contains IDs)
         self.data.set_index(self.data.columns[0], inplace=True)
@@ -43,10 +61,13 @@ class ExcelToJsonConverter:
 
         # Iterate through the DataFrame to construct the JSON structure
         for index, row in self.data.iterrows():
+            logger.debug(index)
+            logger.debug(row)
             json_data[index] = row.dropna().to_dict()
 
         # Save JSON data to a file with UTF-8 encoding
         with open(json_file_path, 'w') as file:
+            # logger.debug(json_data)
             json.dump(json_data, file, indent=2)
 
 def setup_logging():
@@ -65,8 +86,9 @@ def parse_arguments():
         _type_: _description_
     """
     parser = argparse.ArgumentParser(description='Convert Excel file to JSON with specified format')
-    parser.add_argument('-i', '--input_file', default='./data.xlsx', help='Input Excel file path')
-    parser.add_argument('-o', '--output_file', default='../data.json', help='Output JSON file path')
+    parser.add_argument('-i', '--input-file', default='./data.xlsx', help='Input Excel file path')
+    parser.add_argument('-o', '--output-file', default='../data.json', help='Output JSON file path')
+    parser.add_argument('-d', '--debug', default=False, action='store_true', help='Enable debuging')
     return parser.parse_args()
 
 def main():
@@ -75,7 +97,9 @@ def main():
     logger = setup_logging()
     logger.info('Converting Excel to JSON...')
     args = parse_arguments()
-    
+    if args.debug:
+        logger.setLevel(logging.DEBUG)
+    logger.debug(args)
     converter = ExcelToJsonConverter(args.input_file)
     converter.read_excel()
     converter.convert_to_json(args.output_file)
