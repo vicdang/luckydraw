@@ -8,9 +8,33 @@ var timers = {};
 let timerInterval;
 var timerDisplay;
 let seconds = 0;
-var ding = new Audio('flip/sound/ding.wav');
+
+var handleTickInit = function (tick) {
+  var val = tick._viewDefinition.root.attributes["data-change"].value;
+  var timer = Tick.helper.interval(
+    function (passed) {
+      tick.value = val;
+    },
+    2000,
+    { autostart: false }
+  );
+  timers[val] = timer;
+  //   timer.start();
+};
 
 var initPage = function (data) {
+  const elslot = $(`<div class="slotwrapper col-12" id="slotspiner">`);
+  for (let i = 0; i < 6; i++) {
+    var eul = $(`<ul data-slot="${i}">`);
+    for (let j = 0; j < 9; j++) {
+      eul.append($(`<li data-value="${j}">`).html(j));
+    }
+    elslot.append(eul);
+  }
+  const btn = `<button type="button" class="btn btn-success btn-lg" id="btn-slotspiner">Start Spin!</button>`;
+  var elbtn = $("<div>").html(btn)
+  var p = $(`<div class="col-12">`);
+  p.append(elslot).append(elbtn);
   const page = `
     <div class="col-8 main-page" id="main-page">
     <h3>${conf.oraginzation} - ${conf.current_year}</h3>
@@ -24,12 +48,13 @@ var initPage = function (data) {
     <div class="audio-container"><audio id="audioPlayer" preload="auto"><source src="" type="audio/mpeg"></audio>`;
   var elpage = $(`<div class="col-12" id="page-container">`).html(page);
   $("body").prepend(elpage);
+  $("body").prepend(p);
 };
 
 var loadChampionList = function (data) {
   var screenHeight = window.innerHeight;
-  var dynamicDiv = $('#' + data);
-  dynamicDiv.css('height', screenHeight + "px");
+  var dynamicDiv = document.getElementById(data);
+  dynamicDiv.style.height = screenHeight + "px";
 };
 
 var initStage = function () {
@@ -52,7 +77,9 @@ var initStage = function () {
         <label class="tab-label" id="tab-label-${round}" for="tab-${round}" style="display:${d};">${data[key].name}</label>`;
     tab_items += `<div class="tab__content" id="tabc-${round}">
           <div class="round-title"><h1 class="">${data[key].name}</h1></div>
-          <div id="animate-${round}"></div></div>`;
+          <div id="ticker-${round}"></div>
+          <table id="randomData-${round}" style="display:${show_table};"><tr><th>ID</th><th>Team</th><th>Prio</th><th>Name</th><th>Status</th></tr></table>
+        </div>`;
   }
   child_ip.innerHTML = ip_items;
   while (child_ip.firstChild) {
@@ -154,8 +181,8 @@ var addChampionBalls = function (r, data) {
 };
 
 var initRound = function (round, data) {
-  var ele_tk = $(`#animate-${round}`);
-  ele_tk.html("");
+  var ele_tk = document.getElementById(`ticker-${round}`);
+  ele_tk.innerHTML = "";
   var timer_1 = 1 * 100;
   var timer_2 = 1 * 100;
   var l = conf.stage_init[round].skip;
@@ -168,25 +195,20 @@ var initRound = function (round, data) {
   rduser = randomUser(data);
   temp_user = rduser;
   if (conf.test_mode || conf.animation) {
-    const elslot = $(`<div class="slotwrapper col-12" id="slotspiner-${round}">`);
-    for (let i = 0; i < 6; i++) {
-      var eul = $(`<ul data-slot="${i}">`);
-      for (let j = 0; j < 9; j++) {
-        eul.append($(`<li data-value="${j}">`).html(j));
-      }
-      elslot.append(eul);
-    }
-    var p = $(`<div class="col-12">`);
-    p.append(elslot);
-    p.append($(`<h1 id="winner-${round}"></h1>`))
+    var n_elem = document.createElement("div");
+    var tickerc = `<div id="t-${round}" class="tick col-12" data-value="0" data-did-init="handleTickInit" data-change="${rduser[0]}">
+    <div data-layout="horizontal fit" data-repeat="false" data-transform="arrive(999, .0009) -> round -> pad('000000') -> split -> delay(random, 3000, 3000)">
+    <span data-view="flip"></span></div><h1 class="winner" id="winner-${round}"></h1></div>`;
+    n_elem.innerHTML = tickerc;
+    ele_tk.appendChild(Tick.DOM.create(n_elem, { value: 0 }).root);
+    Tick.DOM.parse(n_elem);
   }
-  ele_tk.append(p);
-  var n_btn = `<div class="col-12 btn-grp">
+  var n_btn = document.createElement("div");
+  n_btn.innerHTML = `<div class="col-12 btn-grp">
   <button type="button" class="btn btn-outline-danger btn-lg btn-block btn-roll col-12" id="rollBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="startRoller(this)">${conf.action_btn.start}</button>
   <button type="button" class="btn btn-outline-warning btn-lg btn-block btn-add col-6" id="addBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="addRoller(this)" style="display:none;">${conf.action_btn.add}</button>
   <button type="button" class="btn btn-outline-success btn-lg btn-block btn-ok col-6" id="okBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" data-round="${round}" onclick="okRoller(this)" style="display:none;">${conf.action_btn.accept}</button></div>`;
-  var e_btn = $("<div>").html(n_btn);
-  ele_tk.append(e_btn);
+  ele_tk.appendChild(n_btn);
   removeUser(rduser[0]);
 };
 
@@ -200,45 +222,49 @@ var isMaxPrize = function (round) {
 };
 
 var startRoller = function (data) {
-  current_roll = data.getAttribute("data-id");
-  let stringArray = current_roll.split('');
-  let numberArray = stringArray.map(Number)
-  var winner = $(`#winner-${current_round}`);
-  var btnAdd = $(`#addBtn-${current_round}-${current_roll}`);
-  var btnOk = $(`#okBtn-${current_round}-${current_roll}`);
-
-  data.style.display = "none";
   if (conf.show_timer) {
     stopTimer();
     startTimer();
   }
-  var sound = new Audio('flip/sound/' + conf.sound_effect.rolling[
-    Math.floor(Math.random() * conf.sound_effect.rolling.length)
-  ]);
-  // Loop of playing sound
-  sound.addEventListener('ended', function() {
-      this.currentTime = 0;
-      this.play();
-  }, false);
-
-  $(`#slotspiner-${current_round} ul`).css('width', 100/numberArray.length + '%' );
-  sound.play(); // Start play the sound after click button
-  $(`#slotspiner-${current_round} ul`).playSpin({
-      time: 1000,
-      endNum: numberArray,
-      stopSeq: 'random',
-      easing: 'easeInOutElastic',
-      onEnd: function() {
-          ding.play(); // Play ding after each number is stopped
-      },
-      onFinish: function() {
-          sound.pause(); // To stop the looping sound is pause it
-          btnAdd.css('display', "");
-          btnOk.css('display', "");
-          winner.text(temp_user[1]["name"]);
-          playFireWorks(true);
-      }
-  });
+  playSound(
+    conf.sound_effect.rolling[
+      Math.floor(Math.random() * conf.sound_effect.rolling.length)
+    ],
+    true
+  );
+  current_roll = data.getAttribute("data-id");
+  if (conf.test_mode || conf.animation) {
+    timers[current_roll].start();
+  }
+  var winner = document.getElementById(`winner-${current_round}`);
+  var btnAdd = document.getElementById(
+    `addBtn-${current_round}-${current_roll}`
+  );
+  var btnOk = document.getElementById(`okBtn-${current_round}-${current_roll}`);
+  data.style.display = "none";
+  if (conf.test_mode === true) {
+    t = 0;
+  } else {
+    t = conf.delay;
+  }
+  if (conf.test_mode || conf.show_raw_data) {
+    var ele_table = document.getElementById(`randomData-${current_round}`);
+    const new_elem = document.createElement("tr");
+    new_elem.innerHTML = `<td>${temp_user[0]}</td><td>${temp_user[1]["team"]}</td>
+                          <td>${temp_user[1]["priority"]}</td><td>${temp_user[1]["name"]}</td>
+                          <td>pending</td>`;
+    ele_table.appendChild(new_elem);
+  }
+  setTimeout(() => {
+    btnAdd.style.display = "";
+    btnOk.style.display = "";
+    winner.textContent = temp_user[1]["name"];
+    playFireWorks(true);
+    if (conf.test_mode || conf.animation) {
+        timers[current_roll].stop();
+    }
+    playSound(conf.sound_effect.win_roll, false);
+  }, t);
 };
 
 var okRoller = function (data) {
@@ -370,6 +396,34 @@ var hideNotification = function (data) {
   notification.style.display = "none"; // Set the display property to 'none'
 };
 
+var initSlot = function (params) {
+  var sound = new Audio('flip/sound/mario.mp3');
+    var ding = new Audio('flip/sound/ding.wav');
+    // Loop of playing sound
+    sound.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+
+    const num = [1, 2, 0, 3, 4, 5];
+    $('#slotspiner ul').css('width', 100/num.length + '%' );
+    $('#btn-slotspiner').click(function() {
+        sound.play(); // Start play the sound after click button
+        $('#slotspiner ul').playSpin({
+            time: 1000,
+            endNum: [1, 2, 0, 3, 4, 5],
+            stopSeq: 'random',
+            easing: 'easeInOutElastic',
+            onEnd: function() {
+                ding.play(); // Play ding after each number is stopped
+            },
+            onFinish: function() {
+                sound.pause(); // To stop the looping sound is pause it
+            }
+        });
+    });
+}
+
 var init = function () {
   getData(data_file)
     .then(() => {
@@ -383,6 +437,7 @@ var init = function () {
   initPage();
   loadChampionList("page-container");
   initTimer();
+  initSlot();
 };
 
 window.onload = function () {
