@@ -38,8 +38,9 @@ class ExcelToJsonConverter:
         """_summary_
         """
         # Read Excel file into a pandas DataFrame, specifying 'ID' column as string to preserve leading zeros
+        # with open(self.excel_file_path, 'rb') as f:
         self.data = pd.read_excel(self.excel_file_path, dtype={'uid': str})
-        # logger.debug(self.data)
+        logger.debug(self.data)
 
         # Set the first column as the index (assuming it contains IDs)
         self.data.set_index(self.data.columns[0], inplace=True)
