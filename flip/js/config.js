@@ -1,5 +1,5 @@
 const config = {
-    test_mode: true,      // Enable test mode, default : false
+    test_mode: false,      // Enable test mode, default : false
     animation: false,      // Enable rolling animation, default : true
     show_raw_data: false, // Enable show raw data table, default : false
     show_archived: true,  // Enable show achived result, default : true
