@@ -15,9 +15,9 @@ const config = {
     main_page_title: "Hành Trình Ngược Gió",
     champion_title: "Thắng Giải",
     roller: {
-        easing: 'swing',
-        stopSeq: 'random',
-        time: 10000,
+        easing: ['easeInOutBounce','easeInOutElastic'],
+        stopSeq: ['leftToRight','rightToLeft'],
+        time: 8000,
         loops: 9,               // Number: times it will spin during the animation
         manualStop: false,      // Boolean: spin until user manually click to stop
         useStopTime: false,     // Boolean: use stop time        
@@ -35,6 +35,7 @@ const config = {
             "mario.mp3", 
             "NameEntry.mp3"
         ],
+        reject: "LostLife.mp3",
         end_game: "SavedPrincess.mp3",
         approve: "pipe.mp3",
         fireworks: "fireworks.mp3",
@@ -52,14 +53,14 @@ const config = {
             round: 1,
             max: 1,
             checked: false,
-            skip: [3],
+            skip: [],
         },
         "2": {
             name: "Giải To Bự",
             round: 2,
             max: 2,
             checked: false,
-            skip: [],
+            skip: [3],
         },
         "3": {
             name: "Giải Hơi Bự",

@@ -163,6 +163,7 @@ body {
   font-family: 'tangerine';
   font-weight: bold;
   /* background-image: url('../img/bg.png'); */
+  cursor: none !important;
 }
 
 .container {

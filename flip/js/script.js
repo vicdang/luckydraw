@@ -10,6 +10,7 @@ var timerDisplay;
 let seconds = 0;
 var ding = new Audio(conf.sound_effect.path + conf.sound_effect.ding);
 var fw = new Audio(conf.sound_effect.path + conf.sound_effect.fireworks);
+var is_rolled = false;
 
 var initPage = function (data) {
   const page = `
@@ -167,7 +168,7 @@ var updateBallSize = function (params) {
 var updateArBallSize = function (params, r) {
   $('.stage').css('--ball-size', params/(5*r) + "px");
   $('.stage').css('--ball-font-size', params/(25*r) + "px");
-  $('.stage').css('--ball-text-size', params/(28*r) + "px");
+  $('.stage').css('--ball-text-size', params/(29*r) + "px");
 }
 
 var initRound = function (round, data) {
@@ -185,7 +186,7 @@ var initRound = function (round, data) {
   const elslot = $(`<div class="slotwrapper col-12" id="slotspiner-${round}">`);
   for (let i = 0; i < conf.id_num; i++) {
     var eul = $(`<ul data-slot="${i}" class="col-${12/conf.id_num}">`);
-    for (let j = 0; j < 9; j++) {
+    for (let j = 0; j < 10; j++) {
       eul.append($(`<li class="col-12" data-value="${j}">`).html(j));
     }
     elslot.append(eul);
@@ -196,8 +197,8 @@ var initRound = function (round, data) {
   ele_tk.append(p);
   var n_btn = `<div class="col-12 btn-grp">
   <button type="button" class="btn btn-outline-danger btn-lg btn-block btn-roll offset-3 col-6" id="rollBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="startRoller(this)">${conf.action_btn.start}</button>
-  <button type="button" class="btn btn-outline-warning btn-lg btn-block btn-add col-6" id="addBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="addRoller(this)" style="display:none;">${conf.action_btn.add}</button>
-  <button type="button" class="btn btn-outline-success btn-lg btn-block btn-ok col-6" id="okBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" data-round="${round}" onclick="okRoller(this)" style="display:none;">${conf.action_btn.accept}</button></div>`;
+  <button type="button" class="btn btn-outline-warning btn-lg btn-block btn-add col-6" id="addBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="addRoller(this)" style="display:none;" disabled>${conf.action_btn.add}</button>
+  <button type="button" class="btn btn-outline-success btn-lg btn-block btn-ok col-6" id="okBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" data-round="${round}" onclick="okRoller(this)" style="display:none;" disabled>${conf.action_btn.accept}</button></div>`;
   var e_btn = $("<div>").html(n_btn);
   ele_tk.append(e_btn);
   updateBallSize(ele_tk.width());
@@ -223,6 +224,7 @@ var startRoller = function (data) {
   var btnOk = $(`#okBtn-${current_round}-${current_roll}`);
 
   data.style.display = "none";
+  data.disabled = true;
   if (conf.show_timer) {
     stopTimer();
     startTimer();
@@ -241,8 +243,12 @@ var startRoller = function (data) {
   $(`#slotspiner-${current_round} ul`).playSpin({
       time: t,
       endNum: numberArray,
-      stopSeq: conf.roller.stopSeq,
-      easing: conf.roller.easing,
+      stopSeq: conf.roller.stopSeq[
+        Math.floor(Math.random() * conf.roller.stopSeq.length)
+      ],
+      easing: conf.roller.easing[
+        Math.floor(Math.random() * conf.roller.easing.length)
+      ],
       loop: conf.roller.loops,
       manualStop: conf.roller.manualStop,
       useStopTime: conf.roller.useStopTime,
@@ -252,8 +258,8 @@ var startRoller = function (data) {
       },
       onFinish: function() {
           sound.pause(); // To stop the looping sound is pause it
-          btnAdd.css('display', "");
-          btnOk.css('display', "");
+          btnAdd.css('display', "").attr('disabled', false);
+          btnOk.css('display', "").attr('disabled', false);
           winner.text(temp_user[1]["name"]);
           playFireWorks(true);
       }
@@ -278,13 +284,13 @@ var okRoller = function (data) {
   console.log(archived);
   data.disabled = true;
   document.getElementById(`addBtn-${round}-${rduser[0]}`).click();
-  playSound(conf.sound_effect.approve, false);
   playFireWorks(false);
 };
 
 var addRoller = function (data) {
   current_roll = data.getAttribute("data-id");
   if (isMaxPrize(current_round) === false) {
+    playSound(conf.sound_effect.approve, false);
     initRound(current_round, userData);
   } else {
     showNotification("Next Round");
@@ -346,6 +352,7 @@ var playSound = function (fileName, loop) {
     } else {
       audio.loop = false;
     }
+    console.log(fileName)
     audio.src = conf.sound_effect.path + fileName; // Set the source of the audio element
     audio.play();
   }
@@ -391,6 +398,26 @@ var hideNotification = function (data) {
   notification.style.display = "none"; // Set the display property to 'none'
 };
 
+var keypressHandler = function (params) {
+  $(document).keypress(function(event) {
+    console.log(temp_user[0], archived, $.type(archived), event.keyCode);
+    if (archived[current_round].indexOf(temp_user[0]) === -1) {
+      if (is_rolled===false && (event.which === 32 || event.keyCode === 32)) {
+        $(`#rollBtn-${current_round}-${temp_user[0]}`).trigger('click');
+        is_rolled = true;
+      } else if (is_rolled===true && (event.which === 92 || event.keyCode === 92)) {
+        console.log(event.keyCode)
+        $(`#addBtn-${current_round}-${temp_user[0]}`).trigger('click');
+        playSound(conf.sound_effect.reject, false);
+        is_rolled=false;
+      } else if (is_rolled===true && (event.which === 13 || event.keyCode === 13)) {
+        $(`#okBtn-${current_round}-${temp_user[0]}`).trigger('click');
+        is_rolled=false;
+      }
+    }
+  });
+}
+
 var init = function () {
   getData(data_file)
     .then(() => {
@@ -403,6 +430,7 @@ var init = function () {
   document.title = `${conf.app_name} ${conf.current_year}`;
   initPage();
   loadChampionList("page-container");
+  keypressHandler();
   initTimer();
 };
 
