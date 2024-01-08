@@ -1,9 +1,10 @@
 .slotwrapper {
+    --slot-size: 106px;
     font-family: 'arial';
     overflow: hidden;
     display: inline-block;
     /* border: 1px solid #000; */
-    height: 200px;
+    height: var(--slot-size);
     color: var(--bs-white);
 }
 .slotwrapper ul {
@@ -14,23 +15,26 @@
     float: left;
 }
 .slotwrapper ul {
-    width: 200px;
-    height:200px;
-    font-size: 200px;
-    line-height: 200px;
+    /* width: 200px; */
+    /* height:200px; */
+    font-size: var(--slot-size);
+    line-height: var(--slot-size);
     text-align: center;
 }
 
 .slotwrapper li {
     background-color: var(--bs-red);
-    border: solid 4px var(--bs-primary);
+    border: solid 2px var(--bs-primary);
     border-top: none;
     border-bottom: none;
+    width: var(--slot-size);
+    border-radius: 50%;
+    color: var(--bs-light-yellow);
 }
 .slotwrapper ul li img {
     vertical-align: top;
 }
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
     .slotwrapper {
         width: 100%;
     }
@@ -47,4 +51,4 @@
         font-size: 90px;
         line-height: 90px;
     }
-}
+} */

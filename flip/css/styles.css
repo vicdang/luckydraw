@@ -181,14 +181,16 @@ h2 {
   color: var(--bs-white);
   text-align: center;
   font-weight: 800;
+  font-size: 5rem;
 }
 
 h2 {
-  font-size: 1em;
+  font-size: 4rem;
   margin-bottom: 30px;
 }
 
 h3 {
+  font-size: 3rem;
   font-weight: 400;
   text-align: center;
 }
@@ -277,17 +279,18 @@ td {
 }
 
 .champ-list-label {
-  --bs-list-group-active-bg: var(--bs-orange);
-  --bs-list-group-active-border-color: var(--bs-orange);
+  --bs-list-group-active-bg: var(--bs-light-yellow);
+  --bs-list-group-active-border-color: var(--bs-light-yellow);
+  --bs-list-group-active-color: var(--bs-red);
   text-transform: uppercase;
   font-size: 20px;
   font-weight: bold;
 }
 
 .champ-list {
-  min-height: 70px;
+  /* min-height: 100px;
   max-height: 190px;
-  overflow-y: auto;
+  overflow-y: auto; */
   background-color: transparent;
   border: none;
   /* animation: bubble-anim 2s ease-out infinite; */
@@ -303,7 +306,7 @@ td {
 
 .round-title {
   text-align: center;
-  animation: bubble-anim 2s ease-out infinite;
+  /* animation: bubble-anim 2s ease-out infinite; */
 }
 
 .badge {
@@ -384,13 +387,14 @@ ul {
 }
 
 .main-title {
-  font-size: 70px;
+  font-size: var(--bs-h2);
   color: var(--bs-light-yellow);
   font-family: "pasternake";
   text-transform: capitalize;
-  text-shadow: 0 0 15px rgba(248, 224, 128, 0.8), /* White shadow */
+  text-shadow: 0 0 15px rgba(248, 224, 128, 1), /* White shadow */
                0 0 25px rgba(248, 224, 128, 0.5), /* Lighter white shadow */
-               0 0 35px rgba(248, 224, 128, 0.3);
+               0 0 35px rgba(248, 224, 128, 0.2);
+  animation: bubble-anim 5s ease-out infinite;
 }
 
 canvas {
@@ -439,8 +443,11 @@ canvas {
 }
 
 .stage {
-  width: 100px;
-  height: 100px;
+  --ball-size: 90px;
+  --ball-font-size: 18px;
+  --ball-text-size: 13px;
+  width: var(--ball-size);
+  height: var(--ball-size);
   display: inline-block;
   margin: 7px;
   perspective: 400px;
@@ -477,7 +484,7 @@ canvas {
   left: 5%;
   opacity: 0.6;
   height: 100%;
-  width: 90%;
+  width: 100%;
   filter: blur(2px);
   z-index: 2;
 }
@@ -487,11 +494,11 @@ canvas {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 5%;
-  left: 10%;
+  top: 15%;
+  left: 20%;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 14%, rgba(255, 255, 255, 0) 24%);
-  transform: translateX(-30px) translateY(-30px) skewX(-20deg);
+  transform: translateX(-45%) translateY(-45%) skewX(-20deg);
   filter: blur(3px);
 }
 
@@ -503,12 +510,17 @@ canvas {
   transform: translateX(22px) translateY(-20px) skewX(15deg) skewY(2deg);
   color: var(--bs-white);
   font-family: Arial;
-  /* font-size: 43px; */
-  font-size: 23px;
-  line-height: 100px;
+  font-size: var(--ball-font-size);
+  line-height: var(--ball-size);
   float: left;
   position: relative;
   animation: move-eye-skew 5s ease-out infinite;
+}
+
+.winner-name {
+  color: var(--bs-white);
+  display: block;
+  font-size: var(--ball-text-size);
 }
 
 #wtimer {
@@ -592,6 +604,35 @@ canvas {
 @keyframes text-scrolling-down {
   from { -webkit-transform: translateY(-100%); }
   to { -webkit-transform: translateY(100%); }
+}
+
+@keyframes wiggle {
+  0%, 7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%, 100% {
+    transform: rotateZ(0);
+  }
+}
+
+@keyframes preloader {
+  50% { transform: scale(1.1); }
+  100% {transform: scale(1);}
 }
 
 .btn-grp {

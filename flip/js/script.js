@@ -8,7 +8,8 @@ var timers = {};
 let timerInterval;
 var timerDisplay;
 let seconds = 0;
-var ding = new Audio('flip/sound/ding.wav');
+var ding = new Audio(conf.sound_effect.path + conf.sound_effect.ding);
+var fw = new Audio(conf.sound_effect.path + conf.sound_effect.fireworks);
 
 var initPage = function (data) {
   const page = `
@@ -17,7 +18,7 @@ var initPage = function (data) {
     <h1 class="main-title">${conf.main_page_title}</h1>
     <div class="tab-wrap" id="tab-wrap"></div></div>
     <div class="col-4 left-page" id="champions-list">
-    <h1 class="winners-title">${conf.champion_title}</h1>
+    <h3 class="winners-title">${conf.champion_title}</h3>
     <ul class="list-group list-group-flush" id="champions-list-ul"></ul></div></div>
     <span id="wtimer" class="notification-container"></span>
     <div id="nc" class="notification-container"><div class="notification"></div></div>
@@ -51,7 +52,7 @@ var initStage = function () {
     ip_items += `<input type="radio" id="tab-${round}" data-round="${round}" name="tabGroup1" class="tab" onclick="setRoundStage(this)"${check}>
         <label class="tab-label" id="tab-label-${round}" for="tab-${round}" style="display:${d};">${data[key].name}</label>`;
     tab_items += `<div class="tab__content" id="tabc-${round}">
-          <div class="round-title"><h1 class="">${data[key].name}</h1></div>
+          <div class="round-title"><h2 class="">${data[key].name}</h2></div>
           <div id="animate-${round}"></div></div>`;
   }
   child_ip.innerHTML = ip_items;
@@ -149,15 +150,29 @@ var addChampionBalls = function (r, data) {
   const parent = document.getElementById(`champ-${r}`);
   var child = document.createElement("span");
   child.innerHTML = `<section class="stage">
-  <figure class="ball"><span class="shadow"></span><span class="eight">${data}</span></figure></section>`;
+  <figure class="ball"><span class="shadow"></span><span class="eight">${data}</span></figure>
+  <span class="winner-name">${rename(temp_user[1].name)}</span></section>`;
   parent.appendChild(child);
 };
+
+var rename = function (params) {
+  var arr = params.split(' ');
+  return arr.at(arr.length-1) + " " + arr.at(0);
+}
+
+var updateBallSize = function (params) {
+  $('.slotwrapper').css('--slot-size', params/conf.id_num + "px");
+}
+
+var updateArBallSize = function (params, r) {
+  $('.stage').css('--ball-size', params/(5*r) + "px");
+  $('.stage').css('--ball-font-size', params/(25*r) + "px");
+  $('.stage').css('--ball-text-size', params/(28*r) + "px");
+}
 
 var initRound = function (round, data) {
   var ele_tk = $(`#animate-${round}`);
   ele_tk.html("");
-  var timer_1 = 1 * 100;
-  var timer_2 = 1 * 100;
   var l = conf.stage_init[round].skip;
   var rduser;
   if (l) {
@@ -167,26 +182,26 @@ var initRound = function (round, data) {
   }
   rduser = randomUser(data);
   temp_user = rduser;
-  if (conf.test_mode || conf.animation) {
-    const elslot = $(`<div class="slotwrapper col-12" id="slotspiner-${round}">`);
-    for (let i = 0; i < 6; i++) {
-      var eul = $(`<ul data-slot="${i}">`);
-      for (let j = 0; j < 9; j++) {
-        eul.append($(`<li data-value="${j}">`).html(j));
-      }
-      elslot.append(eul);
+  const elslot = $(`<div class="slotwrapper col-12" id="slotspiner-${round}">`);
+  for (let i = 0; i < conf.id_num; i++) {
+    var eul = $(`<ul data-slot="${i}" class="col-${12/conf.id_num}">`);
+    for (let j = 0; j < 9; j++) {
+      eul.append($(`<li class="col-12" data-value="${j}">`).html(j));
     }
-    var p = $(`<div class="col-12">`);
-    p.append(elslot);
-    p.append($(`<h1 id="winner-${round}"></h1>`))
+    elslot.append(eul);
   }
+  var p = $(`<div class="col-12">`);
+  p.append(elslot);
+  p.append($(`<h3 id="winner-${round}">&nbsp;</h3>`));
   ele_tk.append(p);
   var n_btn = `<div class="col-12 btn-grp">
-  <button type="button" class="btn btn-outline-danger btn-lg btn-block btn-roll col-12" id="rollBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="startRoller(this)">${conf.action_btn.start}</button>
+  <button type="button" class="btn btn-outline-danger btn-lg btn-block btn-roll offset-3 col-6" id="rollBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="startRoller(this)">${conf.action_btn.start}</button>
   <button type="button" class="btn btn-outline-warning btn-lg btn-block btn-add col-6" id="addBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" onclick="addRoller(this)" style="display:none;">${conf.action_btn.add}</button>
   <button type="button" class="btn btn-outline-success btn-lg btn-block btn-ok col-6" id="okBtn-${round}-${rduser[0]}" data-id="${rduser[0]}" data-round="${round}" onclick="okRoller(this)" style="display:none;">${conf.action_btn.accept}</button></div>`;
   var e_btn = $("<div>").html(n_btn);
   ele_tk.append(e_btn);
+  updateBallSize(ele_tk.width());
+  updateArBallSize($('#champions-list').width(), 1);
   removeUser(rduser[0]);
 };
 
@@ -212,7 +227,7 @@ var startRoller = function (data) {
     stopTimer();
     startTimer();
   }
-  var sound = new Audio('flip/sound/' + conf.sound_effect.rolling[
+  var sound = new Audio(conf.sound_effect.path + conf.sound_effect.rolling[
     Math.floor(Math.random() * conf.sound_effect.rolling.length)
   ]);
   // Loop of playing sound
@@ -220,14 +235,18 @@ var startRoller = function (data) {
       this.currentTime = 0;
       this.play();
   }, false);
-
   $(`#slotspiner-${current_round} ul`).css('width', 100/numberArray.length + '%' );
   sound.play(); // Start play the sound after click button
+  var t = conf.test_mode ? 1 : conf.roller.time;
   $(`#slotspiner-${current_round} ul`).playSpin({
-      time: 1000,
+      time: t,
       endNum: numberArray,
-      stopSeq: 'random',
-      easing: 'easeInOutElastic',
+      stopSeq: conf.roller.stopSeq,
+      easing: conf.roller.easing,
+      loop: conf.roller.loops,
+      manualStop: conf.roller.manualStop,
+      useStopTime: conf.roller.useStopTime,
+      stopTime: conf.roller.stopTime,
       onEnd: function() {
           ding.play(); // Play ding after each number is stopped
       },
@@ -268,9 +287,7 @@ var addRoller = function (data) {
   if (isMaxPrize(current_round) === false) {
     initRound(current_round, userData);
   } else {
-    showNotification(
-      `Reached the Maximum ${conf.stage_init[current_round].max} prizes of round ${current_round}`
-    );
+    showNotification("Next Round");
     var next_round = round - 1;
     if (next_round > 0) {
       document.getElementById(`tab-${next_round}`).click();
@@ -297,8 +314,10 @@ var playFireWorks = function (data, p) {
     }
     const container = $(page);
     if (data === true) {
+      fw.play();
       container.fireworks();
     } else {
+      fw.pause();
       container.fireworks("destroy");
     }
   }
@@ -307,31 +326,33 @@ var playFireWorks = function (data, p) {
 var endGame = function (params) {
   playFireWorks(false);
   playFireWorks(true, "#champions-list");
-  document.getElementById("main-page").classList.add("fade-out");
-  const cl = document.getElementById("champions-list");
+  var page = $("#main-page");
+  page.addClass("fade-out");
   setTimeout(function () {
-    document.getElementById("main-page").style.display = "none";
-    cl.classList.remove("col-4");
-    cl.classList.add("col-12");
+    page.css('display', 'none');
+    $("#champions-list").removeClass("col-4").addClass("col-12");
+    $("#champions-list-ul").addClass("offset-2 col-8");
     playSound(conf.sound_effect.end_game, true);
+    updateArBallSize($('#champions-list').width(), 3.1);
+    fw.play();
   }, 3000);
 };
 
 var playSound = function (fileName, loop) {
-    if (conf.test_mode || conf.play_sound) {
+  if (conf.test_mode || conf.play_sound) {
     var audio = document.getElementById("audioPlayer");
     if (loop === true) {
       audio.loop = true;
     } else {
       audio.loop = false;
     }
-    audio.src = `./flip/sound/${fileName}`; // Set the source of the audio element
+    audio.src = conf.sound_effect.path + fileName; // Set the source of the audio element
     audio.play();
   }
 };
 
 var initTimer = function (params) {
-  timerDisplay = document.getElementById('wtimer');
+  timerDisplay = $('#wtimer');
 }
 
 var updateTimer = function () {
